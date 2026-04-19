@@ -9,6 +9,7 @@ vim.o.number = true
 --  Experiment for yourself to see if you like it!
 -- vim.o.relativenumber = true
 
+--
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.o.mouse = 'a'
 
@@ -68,5 +69,10 @@ vim.o.scrolloff = 10
 -- instead raise a dialog asking if you wish to save the current file(s)
 -- See `:help 'confirm'`
 vim.o.confirm = true
+--
 
+-- #vim.opt.language = 'ctype en_US.UTF-8'
+-- #vim.opt.language = 'time en_US.UTF-8'
+-- #vim.opt.language = 'collate en_US.UTF-8'
+--- editorconfig.charset = utf8
 -- vim: ts=2 sts=2 sw=2 et

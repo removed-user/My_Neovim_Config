@@ -16,7 +16,6 @@ return {
         ---@diagnostic disable-next-line: missing-fields
         opts = {},
       },
-      -- Maps LSP server names between nvim-lspconfig and Mason package names.
       'mason-org/mason-lspconfig.nvim',
       'WhoIsSethDaniel/mason-tool-installer.nvim',
 
@@ -120,16 +119,19 @@ return {
       -- Enable the following language servers
       --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
       --  See `:help lsp-config` for information about keys and how to configure
-      --  See  :h vim.lsp.config for changing options of lsp servers 
+      --  See  :h vim.lsp.config for changing options of lsp servers
       ---@type table<string, vim.lsp.Config>
       local servers = {
+        -- NOTE: The '.' actually indicates directory hierarchies, and require works on the srvname.lua in configs
+        -- srvname = require('configs.srvname')
+        --
         -- clangd = {},
         -- gopls = {},
         -- pyright = {},
         -- rust_analyzer = {},
-        -- "html" = {},
-        -- "cssls" = {},
-        --
+        -- html = {},
+        -- cssls = {},
+        -- stylua = {},
         --
         -- Some languages (like typescript) have entire language plugins that can be useful:
         --    https://github.com/pmizio/typescript-tools.nvim
@@ -137,9 +139,10 @@ return {
         -- But for many setups, the LSP (`ts_ls`) will work just fine
         -- ts_ls = {},
 
-        stylua = {}, -- Used to format Lua code
+        -- stylua = {}, -- Used to format Lua code
 
         -- Special Lua Config, as recommended by neovim help docs
+        -- lua_ls = require('configs.lsp.lua_ls')
         lua_ls = {
           on_init = function(client)
             client.server_capabilities.documentFormattingProvider = false -- Disable formatting (formatting is done by stylua)
@@ -184,6 +187,10 @@ return {
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         -- You can add other tools here that you want Mason to install
+        'stylua',
+        'shellcheck',
+        'prettier',
+        'markdownlint',
       })
 
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }

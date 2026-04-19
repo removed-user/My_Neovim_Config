@@ -19,9 +19,9 @@ return {
       notify_on_error = false,
       format_on_save = function(bufnr)
         -- You can specify filetypes to autoformat on save here:
-          -- These options will be passed to conform.format()
+        -- These options will be passed to conform.format()
         local enabled_filetypes = {
-           lua = true,
+          lua = true,
           -- python = true,
         }
         if enabled_filetypes[vim.bo[bufnr].filetype] then
@@ -35,9 +35,9 @@ return {
       },
       -- You can also specify external formatters in here.
       formatters_by_ft = {
-        lua = { "stylua" },
-        -- css = { "prettier" },
-        -- html = { "prettier" },
+        lua = { 'stylua' },
+        css = { 'prettier' },
+        html = { 'prettier' },
         -- rust = { 'rustfmt' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
