@@ -9,8 +9,35 @@ return {
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter-intro`
     config = function()
       -- ensure basic parser are installed
-      local parsers = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' }
+      local parsers = {
+        'bash',
+        'c',
+        'zsh',
+        'bash',
+        'gitattributes',
+        'git_config',
+        'git_rebase',
+        'gitcommit',
+        'hyprlang',
+        'diff',
+        'html',
+        'json',
+        'lua',
+        'luadoc',
+        'markdown',
+        'markdown_inline',
+        'query',
+        --         'printf',
+        --         'regex',
+        'toml',
+        'vim',
+        'vimdoc',
+        'yaml',
+      }
       require('nvim-treesitter').install(parsers)
+
+      -- TODO: Goal:Declarative neovim; Add a script/function to install treesitter-cli if its missing
+      -- This function should be lazy loaded and only triggered by an error that occurs when its missing
 
       ---@param buf integer
       ---@param language string

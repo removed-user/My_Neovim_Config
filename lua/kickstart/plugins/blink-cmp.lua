@@ -21,11 +21,14 @@ return {
           -- `friendly-snippets` -- contains a variety of premade snippets.
           --    See the README about individual language/framework/plugin snippets:
           --    https://github.com/rafamadriz/friendly-snippets
-          {
-            'rafamadriz/friendly-snippets',
-            config = function() require('luasnip.loaders.from_vscode').lazy_load() end,
-          },
+          { 'rafamadriz/friendly-snippets', config = function() require('luasnip.loaders.from_vscode').lazy_load() end },
         },
+      },
+
+      {
+        'saghen/blink.compat',
+        version = '2.*',
+        lazy = true,
         opts = {},
       },
     },
@@ -68,6 +71,10 @@ return {
       },
 
       completion = {
+        menu = {
+          auto_show = true,
+        },
+        ghost_text = { enabled = true },
         -- By default, you may press `<c-space>` to show the documentation.
         -- Optionally, set `auto_show = true` to show the documentation after a delay.
         documentation = { auto_show = true, auto_show_delay_ms = 500 },
@@ -77,7 +84,7 @@ return {
         default = { 'lsp', 'path', 'snippets', 'buffer' },
       },
 
-      snippets = { preset = 'luasnip' },
+      --      snippets = { preset = 'default' }, -- 'luasnip'  |
 
       -- Blink.cmp includes an optional, recommended rust fuzzy matcher,
       -- which automatically downloads a prebuilt binary when enabled.

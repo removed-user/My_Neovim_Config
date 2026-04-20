@@ -189,8 +189,7 @@ return {
         -- You can add other tools here that you want Mason to install
         'stylua',
         'shellcheck',
-        'prettier',
-        'markdownlint',
+        --  'prettierd',
       })
 
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }

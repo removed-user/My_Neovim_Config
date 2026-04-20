@@ -8,7 +8,7 @@ return {
   config = function()
     local lint = require 'lint'
     lint.linters_by_ft = {
-      -- lua = { 'lua_ls' },
+      -- lua = { 'stylua' },
       --  markdown = { 'markdownlint' }, -- Make sure to install `markdownlint` via mason / npm
       bash = { 'shellcheck' },
     }
