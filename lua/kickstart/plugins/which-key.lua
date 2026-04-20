@@ -1,7 +1,6 @@
 -- NOTE: Plugins can also be configured to run Lua code when they are loaded.
 --
--- This is often very useful to both group configuration, as well as handle
--- lazy loading plugins that don't need to be loaded immediately at startup.
+-- This is useful to group configuration, and handle lazy loading
 --
 -- For example, in the following configuration, we use:
 --  event = 'VimEnter'
@@ -9,13 +8,12 @@
 -- which loads which-key before all the UI elements are loaded. Events can be
 -- normal autocommands events (`:help autocmd-events`).
 --
--- Then, because we use the `opts` key (recommended), the configuration runs
--- after the plugin has been loaded as `require(MODULE).setup(opts)`.
+-- By using the opts key, the plugin loads, then the configuration run on usage
 
 ---@module 'lazy'
 ---@type LazySpec
 return {
-  { -- Useful plugin to show you pending keybinds.
+  {
     'folke/which-key.nvim',
     event = 'VimEnter',
     ---@module 'which-key'
@@ -30,7 +28,9 @@ return {
       spec = {
         { '<leader>s', group = '[S]earch', mode = { 'n', 'v' } },
         { '<leader>t', group = '[T]oggle' },
-        { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } }, -- Enable gitsigns recommended keymaps first
+
+        -- Enable gitsigns keymaps first
+        { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
         { 'gr', group = 'LSP Actions', mode = { 'n' } },
       },
     },

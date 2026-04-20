@@ -22,6 +22,7 @@ return {
         -- These options will be passed to conform.format()
         local enabled_filetypes = {
           lua = true,
+          bash = true,
           -- python = true,
         }
         if enabled_filetypes[vim.bo[bufnr].filetype] then
@@ -31,7 +32,7 @@ return {
         end
       end,
       default_format_opts = {
-        lsp_format = 'fallback', -- Use external formatters if configured below, otherwise use LSP formatting. Set to `false` to disable LSP formatting entirely.
+        lsp_format = 'fallback', -- Default to a formatter below and fallback to LSP format if necessary.
       },
       -- You can also specify external formatters in here.
       formatters_by_ft = {
