@@ -33,6 +33,7 @@ return {
         'vim',
         'vimdoc',
         'yaml',
+        'nix',
       }
       require('nvim-treesitter').install(parsers)
 

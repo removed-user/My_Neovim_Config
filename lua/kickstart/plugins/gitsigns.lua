@@ -55,6 +55,22 @@ return {
           gitsigns.nav_hunk 'prev'
         end
       end, { desc = 'Jump to previous git [c]hange' })
+      --  signs = {
+      --      add = {                  ---@diagnostic disable-line: missing-fields
+      --      -- hl = 'GitSignsAdd',
+      --           },
+      --      change = {               ---@diagnostic disable-line: missing-fields
+      --      -- hl = 'GitSignsChange',
+      --           },
+      --      delete = {               ---@diagnostic disable-line: missing-fields
+      --      -- hl = 'GitSignsDelete',
+      --           },
+      --      topdelete = {            ---@diagnostic disable-line: missing-fields
+      --      -- hl = 'GitSignsTopdelete',
+      --           },
+      --      changedelete = {         ---@diagnostic disable-line: missing-fields
+      --      -- hl = 'GitSignsChangedelete',
+      --           },
 
       -- Actions
       -- visual mode

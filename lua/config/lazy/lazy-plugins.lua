@@ -6,6 +6,8 @@ require('lazy').setup({
 
   -- modular approach: using `require 'path.name'` will
 
+  require 'config.lazy.lazydev',
+
   require 'kickstart.plugins.gitsigns',
 
   require 'kickstart.plugins.which-key',
@@ -26,6 +28,7 @@ require('lazy').setup({
 
   require 'lspconfig.blink-cmp',
 
+  require 'lspconfig.none-ls',
   -- NOTE: Next step on your Neovim journey: Add/Configure additional plugins for Kickstart
   --
   -- require 'kickstart.plugins.debug',

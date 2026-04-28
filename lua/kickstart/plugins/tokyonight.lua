@@ -11,7 +11,9 @@ return {
     config = function()
       ---@diagnostic disable-next-line: missing-fields
       require('tokyonight').setup {
+        style = 'storm',
         styles = {
+
           comments = { italic = false }, -- Disable italics in comments
         },
       }
@@ -24,3 +26,4 @@ return {
   },
 }
 -- vim: ts=2 sts=2 sw=2 et
+--

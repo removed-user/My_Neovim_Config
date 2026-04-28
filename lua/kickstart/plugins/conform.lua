@@ -23,6 +23,7 @@ return {
         local enabled_filetypes = {
           lua = true,
           bash = true,
+          nix = true,
           -- python = true,
         }
         if enabled_filetypes[vim.bo[bufnr].filetype] then
@@ -39,6 +40,7 @@ return {
         lua = { 'stylua' },
         css = { 'prettier' },
         html = { 'prettier' },
+        nix = { 'alejandra' },
         -- rust = { 'rustfmt' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },

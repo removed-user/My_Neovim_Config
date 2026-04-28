@@ -13,6 +13,8 @@ return {
       require('mini.ai').setup {
         -- NOTE: Avoid conflicts with the built-in incremental selection mappings on Neovim>=0.12 (see `:help treesitter-incremental-selection`)
         mappings = {
+          add = 'sa',
+          delete = 'sd',
           around_next = 'aa',
           inside_next = 'ii',
         },
@@ -35,7 +37,7 @@ return {
 
       -- You can configure sections in the statusline by overriding their
       -- default behavior. For example, here we set the section for
-      -- cursor location to LINE:COLUMN
+      -- cursor location to LINE:COLUMNs
       ---@diagnostic disable-next-line: duplicate-set-field
       statusline.section_location = function() return '%2l:%-2v' end
 

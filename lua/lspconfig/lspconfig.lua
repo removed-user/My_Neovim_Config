@@ -6,6 +6,7 @@ return {
     -- Main LSP Configuration
     'neovim/nvim-lspconfig',
     dependencies = {
+      { 'folke/lazydev.nvim', ft = 'lua', opts = {} },
       -- Automatically install LSPs and related tools to stdpath for Neovim
       -- Mason must be loaded before its dependents so we need to set it up here.
       -- NOTE: `opts = {}` is the same as calling `require('mason').setup({})`
@@ -16,16 +17,24 @@ return {
         ---@diagnostic disable-next-line: missing-fields
         opts = {},
       },
+
+      -- Mason-lspconfig is a Mason wrapper around nvim-lspconfig, so we can get auto-install + autosetup for lsps.
+      -- For every lsp you declare in the servers block...
+
+      -- mason-tool-installer installs the LSP, while mason-lspconfig runs a handler on it;
+      -- This handler, reads the configs for the defined lsp, and passes them to lspconfig.$servername.setup();
+
+      -- One more note: mason-lspconfig expects the nvim-lspconfig name for servers, and handles name mapping for you.
+
       'mason-org/mason-lspconfig.nvim',
       'WhoIsSethDaniel/mason-tool-installer.nvim',
-
       -- Useful status updates for LSP.
       { 'j-hui/fidget.nvim', opts = {} },
     },
     config = function()
       -- LSP:Language Server Protocol.
       --
-      -- Reminder:LSP servers are standalone processes; Neovim is a clien!
+      -- Reminder:LSP servers are standalone processes; Neovim is a client!
       --
       -- LSP provides Neovim with features like:
       --  - Go to definition
@@ -86,7 +95,7 @@ return {
         end,
       })
 
-      --  Auto install LPS.
+      --  Auto install LSP.
       --  See `:help lsp-config` for information about keys and how to configure
       --  See  :h vim.lsp.config for changing options of lsp servers
       ---@type table<string, vim.lsp.Config>
@@ -101,6 +110,12 @@ return {
         -- html = {},
         -- cssls = {},
         -- stylua = {}, -- Used to format Lua code
+        --
+        nil_ls = {
+          cmd = { 'nil' },
+          filetypes = { 'nix' },
+          root_markers = { 'flake.nix', '.git' },
+        },
 
         -- Special Lua Config, as recommended by neovim help docs
         -- lua_ls = require('configs.lsp.lua_ls')
@@ -115,17 +130,17 @@ return {
             end
 
             client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
-              runtime = {
-                version = 'LuaJIT',
-                path = { 'lua/?.lua', 'lua/?/init.lua' },
-              },
+              --              runtime = {
+              --                version = 'LuaJIT',
+              --                path = { 'lua/?.lua', 'lua/?/init.lua' },
+              --              },
               workspace = {
                 checkThirdParty = false,
                 -- NOTE: this is a lot slower and will cause issues when working on your own configuration.
-                library = vim.tbl_extend('force', vim.api.nvim_get_runtime_file('', true), {
-                  '${3rd}/luv/library',
-                  '${3rd}/busted/library',
-                }),
+                --                library = vim.tbl_extend('force', vim.api.nvim_get_runtime_file('', true), {
+                --     '${3rd}/luv/library',
+                --     '${3rd}/busted/library',
+                --              }),
               },
             })
           end,
@@ -144,6 +159,7 @@ return {
         -- You can add other tools here that you want Mason to install
         'stylua',
         'shellcheck',
+        'alejandra',
         --  'prettierd',
       })
 
