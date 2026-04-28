@@ -19,12 +19,16 @@
 ---@type LazySpec
 return {
   'lewis6991/gitsigns.nvim',
+  dependencies = {
+    'folke/tokyonight.nvim',
+  },
+
   ---@module 'gitsigns'
   ---@type Gitsigns.Config
 
   opts = {
-
     signs = {
+
       add = {
         text = '+',
         hl = 'GitSignsAdd',
@@ -36,7 +40,7 @@ return {
         show_count = false,
       },
       delete = {
-        text = '_',
+        text = '-',
         hl = 'GitSignsDelete',
         show_count = false,
       },
@@ -63,7 +67,7 @@ return {
         show_count = false,
       },
       delete = {
-        text = '_',
+        text = '-',
         hl = 'GitSignsDelete',
         show_count = false,
       },
@@ -86,6 +90,11 @@ return {
         opts.buffer = bufnr
         vim.keymap.set(mode, l, r, opts)
       end
+      vim.api.nvim_set_hl(0, 'GitSignsChangedelete', { fg = '#FF0000' })
+      vim.api.nvim_set_hl(0, 'GitSignsTopdelete', { fg = '#FF0000' })
+      vim.api.nvim_set_hl(0, 'GitSignsDelete', { fg = '#FF0000' })
+      --vim.api.nvim_set_hl(0, 'GitSignsAdd', { fg = '' })
+      --vim.api.nvim_set_hl(0, 'GitSignsChange', { fg = '' })
 
       -- Navigation
       map('n', ']c', function()
@@ -115,8 +124,8 @@ return {
       map('n', '<leader>hR', gitsigns.reset_buffer, { desc = 'git [R]eset buffer' })
       map('n', '<leader>hp', gitsigns.preview_hunk, { desc = 'git [p]review hunk' })
       map('n', '<leader>hi', gitsigns.preview_hunk_inline, { desc = 'git preview hunk [i]nline' })
-      map('n', '<leader>hb', function() gitsigns.blame_line { full = true } end, { desc = 'git [b]lame line' })
       map('n', '<leader>hd', gitsigns.diffthis, { desc = 'git [d]iff against index' })
+      map('n', '<leader>hb', function() gitsigns.blame_line { full = true } end, { desc = 'git [b]lame line' })
       map('n', '<leader>hD', function() gitsigns.diffthis '@' end, { desc = 'git [D]iff against last commit' })
       map('n', '<leader>hQ', function() gitsigns.setqflist 'all' end, { desc = 'git hunk [Q]uickfix list (all files in repo)' })
       map('n', '<leader>hq', gitsigns.setqflist, { desc = 'git hunk [q]uickfix list (all changes in this file)' })
