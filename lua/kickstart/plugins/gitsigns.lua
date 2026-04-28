@@ -21,14 +21,62 @@ return {
   'lewis6991/gitsigns.nvim',
   ---@module 'gitsigns'
   ---@type Gitsigns.Config
-  ---@diagnostic disable-next-line: missing-fields
+
   opts = {
+
     signs = {
-      add = { text = '+' }, ---@diagnostic disable-line: missing-fields
-      change = { text = '|' }, ---@diagnostic disable-line: missing-fields
-      delete = { text = '_' }, ---@diagnostic disable-line: missing-fields
-      topdelete = { text = '‾' }, ---@diagnostic disable-line: missing-fields
-      changedelete = { text = '~' }, ---@diagnostic disable-line: missing-fields
+      add = {
+        text = '+',
+        hl = 'GitSignsAdd',
+        show_count = false,
+      },
+      change = {
+        text = '|',
+        hl = 'GitSignsChange',
+        show_count = false,
+      },
+      delete = {
+        text = '_',
+        hl = 'GitSignsDelete',
+        show_count = false,
+      },
+      topdelete = {
+        text = '‾',
+        hl = 'GitSignsTopdelete',
+        show_count = false,
+      },
+      changedelete = {
+        text = '~',
+        hl = 'GitSignsChangedelete',
+        show_count = false,
+      },
+    },
+    signs_staged = {
+      add = {
+        text = '+',
+        hl = 'GitSignsAdd',
+        show_count = false,
+      },
+      change = {
+        text = '|',
+        hl = 'GitSignsChange',
+        show_count = false,
+      },
+      delete = {
+        text = '_',
+        hl = 'GitSignsDelete',
+        show_count = false,
+      },
+      topdelete = {
+        text = '‾',
+        hl = 'GitSignsTopdelete',
+        show_count = false,
+      },
+      changedelete = {
+        text = '~',
+        hl = 'GitSignsChangedelete',
+        show_count = false,
+      },
     },
     on_attach = function(bufnr)
       local gitsigns = require 'gitsigns'
@@ -55,22 +103,6 @@ return {
           gitsigns.nav_hunk 'prev'
         end
       end, { desc = 'Jump to previous git [c]hange' })
-      --  signs = {
-      --      add = {                  ---@diagnostic disable-line: missing-fields
-      --      -- hl = 'GitSignsAdd',
-      --           },
-      --      change = {               ---@diagnostic disable-line: missing-fields
-      --      -- hl = 'GitSignsChange',
-      --           },
-      --      delete = {               ---@diagnostic disable-line: missing-fields
-      --      -- hl = 'GitSignsDelete',
-      --           },
-      --      topdelete = {            ---@diagnostic disable-line: missing-fields
-      --      -- hl = 'GitSignsTopdelete',
-      --           },
-      --      changedelete = {         ---@diagnostic disable-line: missing-fields
-      --      -- hl = 'GitSignsChangedelete',
-      --           },
 
       -- Actions
       -- visual mode
