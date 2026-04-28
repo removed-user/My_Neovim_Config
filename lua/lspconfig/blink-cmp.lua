@@ -70,17 +70,62 @@ return {
         -- Optionally, set `auto_show = true` to show the documentation after a delay.
         documentation = { auto_show = true, auto_show_delay_ms = 500 },
       },
-      sources = {
-        default = { 'lazydev', 'lsp', 'path', 'snippets', 'buffer' },
+      {
+        sources = {
+          default = function(ctx) ---@diagnostic disable-line
+            local success, node = pcall(vim.treesitter.get_node)
+            if success and node and vim.tbl_contains({ 'coment', 'line_comment', 'block_comment' }, node:type()) then
+              return { 'buffer' }
+            elseif vim.bo.filetype == 'lua' then
+              return { 'lazydev', 'lsp', 'path', 'snippets', 'buffer' }
+            else
+              return { 'lsp', 'path', 'snippets', 'buffer' }
+            end
+          end,
+        },
         providers = {
-
-          --        default = { 'lsp'  -- 'path', 'snippets', 'buffer', ' },
+          lsp = {
+            name = 'lsp',
+            enabled = true,
+            module = 'blink.cmp.sources.lsp',
+          },
           lazydev = {
             name = 'LazyDev',
             module = 'lazydev.integrations.blink',
             score_offset = 100,
           },
+          path = {
+            name = 'path',
+            module = 'blink.cmp.sources.path',
+          },
+          snippets = {
+            name = 'snippets',
+            module = 'blink.cmp.sources.snippets',
+          },
+          -- Cmdline sources ~
+          buffer = {
+            name = 'buffer',
+            module = 'blink.cmp.sources.buffer',
+          },
+          cmdline = {
+            name = 'cmdline',
+            module = 'blink.cmp.sources.cmdline',
+          },
         },
+        --
+        -- Disabled sources ~
+        -- omni (blink.cmp.sources.complete_func)
+        ---
+        --      sources = {
+        --        default = { 'lazydev', 'lsp', 'path', 'snippets', 'buffer' },
+        --        providers = {
+        --
+        --          lazydev = {
+        --            name = 'LazyDev',
+        --            module = 'lazydev.integrations.blink',
+        --            score_offset = 100,
+        --          },
+        --        },
       },
       --      snippets = { preset = 'default' }, -- 'luasnip'  |
 

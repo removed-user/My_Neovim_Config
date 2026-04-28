@@ -90,6 +90,23 @@ P.S. You can delete this when you're done too. It's your config now! :)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+local disabled_features = {
+  'Kerberos',
+  'GSS-API',
+  'IDN',
+  'PSL',
+  'NTLM',
+  'SPNEGO',
+}
+for _, plugin in ipairs(disabled_features) do
+  vim.g['loaded_' .. plugin] = 1
+end
+
+vim.g.loaded_ruby_provider = 0
+vim.g.loaded_node_provider = 0
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_python3_provider = 0
+
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = false
 
