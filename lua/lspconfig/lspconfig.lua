@@ -113,7 +113,7 @@ return {
         --
         nil_ls = {
           cmd = { 'nil' },
-          filetypes = { 'nix' },
+          filetypes = { '.nix' },
           root_markers = { 'flake.nix', '.git' },
         },
 
