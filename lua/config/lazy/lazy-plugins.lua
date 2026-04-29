@@ -44,37 +44,49 @@ require('lazy').setup {
 
     -- modular approach: using `require 'path.name'` will
 
-    require 'config.lazy.lazydev',
-
-    require 'kickstart.plugins.gitsigns',
-
-    require 'kickstart.plugins.which-key',
-
-    require 'kickstart.plugins.telescope',
-
-    require 'lspconfig.lspconfig',
-
-    require 'kickstart.plugins.conform',
-
-    require 'kickstart.plugins.tokyonight',
-
-    require 'kickstart.plugins.todo-comments',
-
-    require 'kickstart.plugins.mini',
-
-    require 'kickstart.plugins.treesitter',
-
-    require 'lspconfig.blink-cmp',
-
-    require 'lspconfig.none-ls',
     -- NOTE: Next step on your Neovim journey: Add/Configure additional plugins for Kickstart
     --
     -- require 'kickstart.plugins.debug',
-    -- require 'kickstart.plugins.indent_line',
-    require 'kickstart.plugins.lint',
-    require 'kickstart.plugins.autopairs',
+
+    --kickstart/plugins/debug
+    -- Manual
+    --kickstart/plugins/neo-tree
     require 'kickstart.plugins.neo-tree',
+    --kickstart/plugins/telescope
+    require 'kickstart.plugins.telescope',
+    --kickstart/plugins/mini
+    require 'kickstart.plugins.mini',
+    --kickstart/plugins/which-key
+    require 'kickstart.plugins.which-key',
+
+    -- Visuals/Theme
+    --kickstart/plugins/tokyonight
+    require 'kickstart.plugins.tokyonight',
+    --kickstart/plugins/todo-comments
+    require 'kickstart.plugins.todo-comments',
+    --kickstart/plugins/gitsigns
+    require 'kickstart.plugins.gitsigns',
+
+    -- Intelligence
+    --   -LSPConfig
+    require 'lspconfig.lspconfig',
+    require 'lspconfig.blink-cmp',
+    --   -Tresitter
+    require 'kickstart.plugins.treesitter',
     require 'lspconfig.tree_sitter_manager',
+    --   -Lang_Specs
+    require 'lspconfig.none-ls',
+    require 'config.lazy.lazydev',
+
+    -- -Formatting
+    --  kickstart/plugins/conform
+    require 'kickstart.plugins.conform',
+    --  kickstart/plugins/lint
+    require 'kickstart.plugins.lint',
+    --  kickstart/plugins/indent_line
+    -- require 'kickstart.plugins.indent_line',
+    --kickstart/plugins/autopairs
+    require 'kickstart.plugins.autopairs',
 
     -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
     --    This is the easiest way to modularize your config.
