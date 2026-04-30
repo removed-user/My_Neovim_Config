@@ -1,47 +1,67 @@
 -- [[ Configure and install plugins ]]
 
+--[[
+ NOTE:
+ possible keys 
+  'plugin/repo'
+
+--]]
+
+---@diagnostic disable: unused-local
+---@diagnostic disable: unused-function
+local function finalize_spec(plugins)
+  for _, plugin in ipairs(plugins) do
+    if type(plugin.opts) == 'string' then
+      local path = plugin.opts
+      plugin.opts = function() return require(path) end
+    end
+  end
+
+  return plugins
+end
+
 require('lazy').setup {
   spec = {
 
     -- NOTE: Plugins can be added via a link or github org/name. To run setup automatically, use `opts = {}`
     { 'NMAC427/guess-indent.nvim', opts = {} },
 
-    -- Refactor for lazy evaluation, proper "spec" setup and options propagation
+    --[[ Refactor for lazy evaluation, proper "spec" setup and options propagation
 
-    --OPTION 1
+    OPTION 1
 
-    -- return {
-    --  'repo/plugin',
-    --  opts = {
-    --    option = true,
-    --   },
-    --  }
+     return {
+      'repo/plugin',
+      opts = {
+        option = true,
+       },
+      }
 
-    --OPTION 2
-    -- Also shows acceptable version overrides for { version = "*"} -- and usage of main for ovrriding reference name
+    OPTION 2
+     Also shows acceptable version overrides for { version = "*"} -- and usage of main for ovrriding reference name
 
-    -- return {
-    --  'repo/plugin',
-    --  main = "plugin",
-    --  version = false, branch = develop commit = "cniod1", pin = true,
-    --  opts = require('dir.name')
-    --  }
+     return {
+      'repo/plugin',
+      main = "plugin",
+      version = false, branch = develop commit = "cniod1", pin = true,
+      opts = require('dir.name')
+      }
 
-    --OPTION 2
+    OPTION 2
 
-    --  You have total control over the spec here, but its more complicated.
-    --
-    -- return {
-    --  'repo/plugin',
-    --  config = function()
-    --  local options = require('dir.name')
-    --  require("plugin").setup(options)
-    --
-    -- You can also add arbitrary logic here
-    -- print('plugin "name" loaded')
-    --  end,
-    --  }
+      You have total control over the spec here, but its more complicated.
 
+     return {
+      'repo/plugin',
+      config = function()
+      local options = require('dir.name')
+      require("plugin").setup(options)
+
+     You can also add arbitrary logic here
+     print('plugin "name" loaded')
+      end,
+     }
+ --]]
     -- modular approach: using `require 'path.name'` will
 
     -- NOTE: Next step on your Neovim journey: Add/Configure additional plugins for Kickstart
@@ -64,19 +84,18 @@ require('lazy').setup {
     require 'kickstart.plugins.tokyonight',
     --kickstart/plugins/todo-comments
     require 'kickstart.plugins.todo-comments',
-    --kickstart/plugins/gitsigns
-    require 'kickstart.plugins.gitsigns',
 
-    -- Intelligence
-    --   -LSPConfig
-    require 'lspconfig.lspconfig',
-    require 'lspconfig.blink-cmp',
-    --   -Tresitter
-    require 'kickstart.plugins.treesitter',
-    require 'lspconfig.tree_sitter_manager',
-    --   -Lang_Specs
-    require 'lspconfig.none-ls',
-    require 'config.lazy.lazydev',
+    {
+      'lewis6991/gitsigns.nvim',
+      main = 'gitsigns',
+      opts = { require 'kickstart.plugins.gitsigns' },
+      dependencies = {
+        'folke/tokyonight.nvim',
+      },
+    },
+
+    --   --kickstart/plugins/gitsigns
+    --   require 'kickstart.plugins.gitsigns',
 
     -- -Formatting
     --  kickstart/plugins/conform
@@ -87,6 +106,17 @@ require('lazy').setup {
     -- require 'kickstart.plugins.indent_line',
     --kickstart/plugins/autopairs
     require 'kickstart.plugins.autopairs',
+
+    -- intelligence
+    --   -LSPConfig
+    require 'intelligence.lspconfig.lspconfig',
+    require 'intelligence.lspconfig.blink-cmp',
+    --   -Tresitter
+    require 'intelligence.lspconfig.treesitter',
+    require 'intelligence.lspconfig.tree_sitter_manager',
+    --   -Lang_Specs
+    require 'config.lazy.lazydev',
+    require 'intelligence.lspconfig.none-ls',
 
     -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
     --    This is the easiest way to modularize your config.

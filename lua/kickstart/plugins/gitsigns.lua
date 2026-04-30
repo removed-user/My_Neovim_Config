@@ -10,18 +10,15 @@
 --        end,
 --    }
 --
--- Here is a more advanced example where we pass configuration
--- options to `gitsigns.nvim`.
---
 -- See `:help gitsigns` to understand what the configuration keys do
 
 ---@module 'lazy'
 ---@type LazySpec
 return {
-  'lewis6991/gitsigns.nvim',
-  dependencies = {
-    'folke/tokyonight.nvim',
-  },
+  --  'lewis6991/gitsigns.nvim',
+  --  dependencies = {
+  --    'folke/tokyonight.nvim',
+  --  },
 
   ---@module 'gitsigns'
   ---@type Gitsigns.Config
