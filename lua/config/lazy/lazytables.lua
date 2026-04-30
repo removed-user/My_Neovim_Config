@@ -74,8 +74,17 @@ local result = evaluate_plugin(plugin_pre)
 ----------------------------------------------------------------------------------------------------------
 
 local plugin_list = {
-  example_plugin = { repo = 'username/plugin.nvim' },
-  example_plugin2 = { repo = 'username2/plugin2.nvim' },
+  example_plugin = { dir = 'username/plugin.nvim', enabled = false },
+  example_plugin2 = { dir = 'username2/plugin2.nvim', enabled = false },
+
+  gitsigns = {
+    repo = 'lewis6991/gitsigns.nvim',
+    main = 'gitsigns',
+    opts = require 'kickstart.plugins.gitsigns',
+    dependencies = {
+      'folke/tokyonight.nvim',
+    },
+  },
 }
 local Blueprint = {}
 local defaults = {
@@ -108,16 +117,16 @@ end
 local function flatten(table)
   local result = {}
   for key, _ in pairs(defaults) do
-    local value = table[key]
-    if type(value) == 'table' then
-      result[key] = flatten(value)
+    local plugin_value = table[key]
+    if type(plugin_value) == 'table' then
+      result[key] = flatten(plugin_value)
     else
-      result[key] = value
+      result[key] = plugin_value
     end
   end
 
-  for key, value in pairs(table) do
-    if result[key] == nil then result[key] = value end
+  for key, plugin_value in pairs(table) do
+    if result[key] == nil then result[key] = (type(plugin_value) == 'table') and flatten(plugin_value) or plugin_value end
   end
   return result
 end
@@ -142,21 +151,85 @@ for name, config in pairs(plugin_list) do
   table.insert(entry, 1, repo_val)
   table.insert(Blueprint.specs, entry)
 end
---return plugin_specgen.spec
-print '###EVALUATED - TABLE###'
-print(vim.inspect(Blueprint.specs))
-print '###SEPERATOR###'
-print(vim.inspect(Blueprint.registry['name']))
+return Blueprint.specs
 
---    __newindex = function(t, k, v)
---    rawset(t, k, v)
+--print '###EVALUATED - TABLE###'
+-- print(vim.inspect(Blueprint.specs))
+--print '###SEPERATOR###'
+-- print(vim.inspect(Blueprint.registry['name']))
+-- print '###SEPERATOR###'
+-- print(type(Blueprint.specs[1]))
+-- print '###SEPERATOR###'
+-- print(#Blueprint.specs)
+-- print '###SEPERATOR###'
+-- print(#Blueprint.specs[1])
+-- print '###SEPERATOR###'
+-- print(#Blueprint.specs[2])
+-- print '###SEPERATOR###'
+-- print(#Blueprint.specs[3])
+-- print '###SEPERATOR###'
+-- print(#Blueprint.specs[4])
+
+--     --kickstart.plugins.debug
+--     -- Manual
+--     require 'kickstart.plugins.neo-tree',
+--     require 'kickstart.plugins.telescope',
+--     require 'kickstart.plugins.mini',
+--     require 'kickstart.plugins.which-key',
+
+--     -- Visuals/Theme
+--     require 'kickstart.plugins.tokyonight',
+--     require 'kickstart.plugins.todo-comments',
+--     require 'kickstart.plugins.gitsigns',
 --
---      if type(v) ~= 'table' then return end
---  setmetatable(v, make_plugin_metatable(defaults[k]))
---    end
---  }
---end
+--     -- -Formatting
+--     require 'kickstart.plugins.conform',
+--     require 'kickstart.plugins.lint',
+--     require 'kickstart.plugins.indent_line',
+--     require 'kickstart.plugins.autopairs',
+--
+--     -- intelligence
+--     --   -LSPConfig
+--     require 'intelligence.lspconfig.lspconfig',
+--     require 'intelligence.lspconfig.blink-cmp',
+--     --   -Tresitter
+--     require 'intelligence.lspconfig.treesitter',
+--     require 'intelligence.lspconfig.tree_sitter_manager',
+--     --   -Lang_Specs
+--     require 'config.lazy.lazydev',
+--     require 'intelligence.lspconfig.none-ls',
+-- ###################################################################
 
+-- kickstart/plugins/debug.lua
+-- Manual
+--     kickstart/plugins/neo-tree.lua
+--     kickstart/plugins/telescope.lua
+--     kickstart/plugins/mini.lua
+--     kickstart/plugins/which-key.lua.lua
+
+-- Visuals/Theme
+--     kickstart/plugins/tokyonight.lua
+--     kickstart/plugins/todo-comments.lua
+--     kickstart/plugins/gitsigns.lua.lua
+
+-- Formatting
+--     kickstart/plugins/conform.lua
+--     kickstart/plugins/lint.lua
+--     kickstart/plugins/indent_line.lua
+--     kickstart/plugins/autopairs.lua
+
+-- intelligence
+--  LSPConfig
+--     intelligence/lspconfig/lspconfig.lua
+--     intelligence/lspconfig/blink-cmp.lua
+--  Tresitter
+--     intelligence/lspconfig/treesitter.lua
+--     intelligence/lspconfig/tree_sitter_manager.lua
+--  Lang_Specs
+--     config/lazy/lazydev.lua
+--     intelligence/lspconfig/none-ls.lua
+-- [[
 -- M.config = {}
 -- setmetatable(M.config, make_plugin_metatable(defaults))
 -- return M
+--]]

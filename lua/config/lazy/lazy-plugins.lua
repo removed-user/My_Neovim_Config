@@ -9,20 +9,21 @@
 
 ---@diagnostic disable: unused-local
 ---@diagnostic disable: unused-function
-local function finalize_spec(plugins)
-  for _, plugin in ipairs(plugins) do
-    if type(plugin.opts) == 'string' then
-      local path = plugin.opts
-      plugin.opts = function() return require(path) end
-    end
-  end
 
-  return plugins
-end
+-- local function finalize_spec(plugins)
+--   for _, plugin in ipairs(plugins) do
+--     if type(plugin.opts) == 'string' then
+--       local path = plugin.opts
+--       plugin.opts = function() return require(path) end
+--     end
+--   end
+--
+--   return plugins
+-- end
 
 require('lazy').setup {
   spec = {
-
+--    require 'config.lazy.lazytables',
     -- NOTE: Plugins can be added via a link or github org/name. To run setup automatically, use `opts = {}`
     { 'NMAC427/guess-indent.nvim', opts = {} },
 

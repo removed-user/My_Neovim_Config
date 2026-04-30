@@ -26,7 +26,6 @@ return {
   ---@module 'blink.cmp'
   ---@type blink.cmp.Config
   opts = {
-
     keymap = {
       -- 'default' (recommended) for mappings similar to built-in completions
       --   <c-y> to accept ([y]es) the completion.
@@ -62,9 +61,20 @@ return {
       use_nvim_cmp_as_default = true,
     },
 
+    -- vim.api.nvim_create_autocmd("BufEnter", {
+    -- buffer = 0,
+    --       callback = function(ctx),
+    --
+    --     vim.api.nvim_get_current_buf()
+    --       end,
+    --     }),
+
     completion = {
       menu = {
+        border = 'single',
         auto_show = true,
+        scrollbar = true,
+        -- winhighlight = 'BlinkCmpMenu',
       },
       ghost_text = { enabled = true },
       -- By default, you may press `<c-space>` to show the documentation.
@@ -73,7 +83,7 @@ return {
     },
     {
       sources = {
-        default = function(ctx) ---@diagnostic disable-line
+        default = function(ctx)
           local success, node = pcall(vim.treesitter.get_node)
           if success and node and vim.tbl_contains({ 'coment', 'line_comment', 'block_comment' }, node:type()) then
             return { 'buffer' }
@@ -113,6 +123,7 @@ return {
           module = 'blink.cmp.sources.cmdline',
         },
       },
+
       --
       -- Disabled sources ~
       -- omni (blink.cmp.sources.complete_func)
