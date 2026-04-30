@@ -151,7 +151,7 @@ for name, config in pairs(plugin_list) do
   table.insert(entry, 1, repo_val)
   table.insert(Blueprint.specs, entry)
 end
-return Blueprint.specs
+-- return Blueprint.specs
 
 --print '###EVALUATED - TABLE###'
 -- print(vim.inspect(Blueprint.specs))

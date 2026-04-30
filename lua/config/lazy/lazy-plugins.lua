@@ -23,7 +23,7 @@
 
 require('lazy').setup {
   spec = {
---    require 'config.lazy.lazytables',
+    --    require 'config.lazy.lazytables',
     -- NOTE: Plugins can be added via a link or github org/name. To run setup automatically, use `opts = {}`
     { 'NMAC427/guess-indent.nvim', opts = {} },
 
