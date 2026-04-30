@@ -4,8 +4,20 @@ return {
   config = function()
     require('tree-sitter-manager').setup {
       -- Default Options
-      ensure_installed = {},
-      border = nil, -- border style of tree-sitter-manager window
+
+      ensure_installed = {
+        'meson',
+        'nix',
+        'lua',
+        'luadoc',
+        'make',
+        'markdown',
+        'markdown_inline',
+        'bash',
+        'zsh',
+      },
+      border = 'single',
+      nohighlight = {},
       auto_install = true,
       highlight = true,
       parser_dir = vim.fn.stdpath 'data' .. '/site/parser',

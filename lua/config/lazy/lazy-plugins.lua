@@ -4,7 +4,6 @@
  NOTE:
  possible keys 
   'plugin/repo'
-
 --]]
 
 ---@diagnostic disable: unused-local
@@ -21,13 +20,7 @@
 --   return plugins
 -- end
 
-require('lazy').setup {
-  spec = {
-    --    require 'config.lazy.lazytables',
-    -- NOTE: Plugins can be added via a link or github org/name. To run setup automatically, use `opts = {}`
-    { 'NMAC427/guess-indent.nvim', opts = {} },
-
-    --[[ Refactor for lazy evaluation, proper "spec" setup and options propagation
+--[[ Refactor for lazy evaluation, proper "spec" setup and options propagation
 
     OPTION 1
 
@@ -63,7 +56,11 @@ require('lazy').setup {
       end,
      }
  --]]
-    -- modular approach: using `require 'path.name'` will
+require('lazy').setup {
+  spec = {
+    --    require 'config.lazy.lazytables',
+    -- NOTE: Plugins can be added via a link or github org/name. To run setup automatically, use `opts = {}`
+    { 'NMAC427/guess-indent.nvim', opts = {} },
 
     -- NOTE: Next step on your Neovim journey: Add/Configure additional plugins for Kickstart
     --
@@ -102,6 +99,13 @@ require('lazy').setup {
     --  kickstart/plugins/conform
     require 'kickstart.plugins.conform',
     --  kickstart/plugins/lint
+
+    {
+      'mfussenegger/nvim-lint',
+      main = 'lint',
+
+      opts = { require 'kickstart.plugins.lint' },
+    },
     require 'kickstart.plugins.lint',
     --  kickstart/plugins/indent_line
     -- require 'kickstart.plugins.indent_line',

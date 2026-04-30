@@ -71,7 +71,28 @@ local result = evaluate_plugin(plugin_pre)
 --]]
 -- print '###EVALUATED - TABLE###'
 -- print(vim.inspect(result))
+
+--[[
+-- function to lazy setup a plugin and require its configuration file 
+config = function(_, opts)
+require(plugin_path).setup(opts)
+end,
+--]]
+
 ----------------------------------------------------------------------------------------------------------
+local defaults = {
+  enabled = true,
+  lazy = true,
+  --[[
+Matching and splitting function returns the second part of repo name, split on / and on '.nvim'
+This sets main of username/repo.nvim to repo, so all options and config can be tucked away behind their plugin name
+  --]]
+  main = function(self) return self.repo and self.repo:match('.*/(.*)'):gsub('%.nvim$', '') or nil end,
+  config = function(self)
+    if not self.conf_path then return nil end
+    return function(_, opts) require(self.conf_path).setup(opts) end
+  end,
+}
 
 local plugin_list = {
   example_plugin = { dir = 'username/plugin.nvim', enabled = false },
@@ -80,20 +101,14 @@ local plugin_list = {
   gitsigns = {
     repo = 'lewis6991/gitsigns.nvim',
     main = 'gitsigns',
-    opts = require 'kickstart.plugins.gitsigns',
+    conf_path = 'kickstart.plugins.gitsigns',
+    --opts = require 'kickstart.plugins.gitsigns',
     dependencies = {
       'folke/tokyonight.nvim',
     },
   },
 }
 local Blueprint = {}
-local defaults = {
-  enabled = true,
-  lazy = true,
-  -- Matching and splitting function returns the second part of repo name, split on / and on '.nvim'
-  -- This sets main of username/repo.nvim to repo, so all options and config can be tucked away behind their plugin name
-  main = function(self) return self.repo and self.repo:match('.*/(.*)'):gsub('%.nvim$', '') or nil end,
-}
 
 local function make_plugin_metatable(default_vals)
   return {
@@ -153,22 +168,22 @@ for name, config in pairs(plugin_list) do
 end
 -- return Blueprint.specs
 
---print '###EVALUATED - TABLE###'
--- print(vim.inspect(Blueprint.specs))
---print '###SEPERATOR###'
--- print(vim.inspect(Blueprint.registry['name']))
--- print '###SEPERATOR###'
--- print(type(Blueprint.specs[1]))
--- print '###SEPERATOR###'
--- print(#Blueprint.specs)
--- print '###SEPERATOR###'
--- print(#Blueprint.specs[1])
--- print '###SEPERATOR###'
--- print(#Blueprint.specs[2])
--- print '###SEPERATOR###'
--- print(#Blueprint.specs[3])
--- print '###SEPERATOR###'
--- print(#Blueprint.specs[4])
+print '###EVALUATED - TABLE###'
+print(vim.inspect(Blueprint.specs))
+print '###SEPERATOR###'
+print(vim.inspect(Blueprint.registry['name']))
+print '###SEPERATOR###'
+print(type(Blueprint.specs[1]))
+print '###SEPERATOR###'
+print(#Blueprint.specs)
+print '###SEPERATOR###'
+print(#Blueprint.specs[1])
+print '###SEPERATOR###'
+print(#Blueprint.specs[2])
+print '###SEPERATOR###'
+print(#Blueprint.specs[3])
+print '###SEPERATOR###'
+--print(#Blueprint.specs[4])
 
 --     --kickstart.plugins.debug
 --     -- Manual

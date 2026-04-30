@@ -96,7 +96,7 @@ return {
       },
       providers = {
         lsp = {
-          name = 'lsp',
+          name = 'LSP',
           enabled = true,
           module = 'blink.cmp.sources.lsp',
         },

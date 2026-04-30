@@ -2,11 +2,11 @@
 ---@module 'lazy'
 ---@type LazySpec
 return {
+  --      { 'folke/lazydev.nvim', ft = 'lua', opts = require 'config.lazy.lazydev' },
   {
     -- Main LSP Configuration
     'neovim/nvim-lspconfig',
     dependencies = {
-      { 'folke/lazydev.nvim', ft = 'lua', opts = require 'config.lazy.lazydev' },
       -- Automatically install LSPs and related tools to stdpath for Neovim
       -- Mason must be loaded before its dependents so we need to set it up here.
       -- NOTE: `opts = {}` is the same as calling `require('mason').setup({})`
@@ -15,7 +15,7 @@ return {
         ---@module 'mason.settings'
         ---@type MasonSettings
         ---@diagnostic disable-next-line: missing-fields
-        opts = {},
+        opts = { pip = false },
       },
 
       -- Mason-lspconfig is a Mason wrapper around nvim-lspconfig, so we can get auto-install + autosetup for lsps.
@@ -109,42 +109,15 @@ return {
         -- rust_analyzer = {},
         -- html = {},
         -- cssls = {},
-        -- stylua = {}, -- Used to format Lua code
         --
+        stylua = {}, -- Used to format Lua code
         nil_ls = {
           cmd = { 'nil' },
           filetypes = { '.nix' },
           root_markers = { 'flake.nix', '.git' },
+          single_file_support = true,
         },
-
-        -- Special Lua Config, as recommended by neovim help docs
-        -- lua_ls = require('configs.lsp.lua_ls')
-
         lua_ls = {
-          on_init = function(client)
-            client.server_capabilities.documentFormattingProvider = false -- Disable formatting (formatting is done by stylua)
-
-            if client.workspace_folders then
-              local path = client.workspace_folders[1].name
-              if path ~= vim.fn.stdpath 'config' and (vim.uv.fs_stat(path .. '/.luarc.json') or vim.uv.fs_stat(path .. '/.luarc.jsonc')) then return end
-            end
-
-            client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
-              --              runtime = {
-              --                version = 'LuaJIT',
-              --                path = { 'lua/?.lua', 'lua/?/init.lua' },
-              --              },
-              workspace = {
-                checkThirdParty = false,
-                -- NOTE: this is a lot slower and will cause issues when working on your own configuration.
-                --                library = vim.tbl_extend('force', vim.api.nvim_get_runtime_file('', true), {
-                --     '${3rd}/luv/library',
-                --     '${3rd}/busted/library',
-                --              }),
-              },
-            })
-          end,
-          ---@type lspconfig.settings.lua_ls
           settings = {
             Lua = {
               format = { enable = false }, -- Disable formatting (formatting is done by stylua)
@@ -162,9 +135,17 @@ return {
         'alejandra',
         --  'prettierd',
       })
-
-      require('mason-tool-installer').setup { ensure_installed = ensure_installed }
-
+      require('mason-tool-installer').setup {
+        ensure_installed = ensure_installed,
+        auto_update = true,
+        --  'WhoIsSethDaniel/mason-tool-installer.nvim'
+        --[[
+'williamboman/mason-lspconfig.nvim',      -- Lspconfig names
+'jay-babu/mason-nvim-dap.nvim',           -- Nvim-dap names
+'jay-babu/mason-null-ls.nvim',            -- Null-ls names
+--]]
+        integrations = { ['mason-lspconfig'] = true, ['mason-null-ls'] = true, ['mason-nvim-dap'] = true },
+      }
       for name, server in pairs(servers) do
         vim.lsp.config(name, server)
         vim.lsp.enable(name)
