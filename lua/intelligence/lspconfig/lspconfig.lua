@@ -133,6 +133,10 @@ return {
         'stylua',
         'shellcheck',
         'alejandra',
+        'marksman',
+        -- 'yaml',
+        -- 'yara',
+
         --  'prettierd',
       })
       require('mason-tool-installer').setup {
