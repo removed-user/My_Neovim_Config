@@ -92,8 +92,11 @@ local defaults = {
   enabled = true,
   lazy = true,
   main = function(self) return self.repo and self.repo:match('.*/(.*)"'):gsub('%.nvim$', '') or nil end,
+  --config_path = function(self) return self.conf_path or
+
+  --  local status_ok, self.name
   config = function(self)
-    if not self.conf_path then return nil end
+    if not self.config_path then print('config_path for plugin:', self.main, 'is not listed') end
     return function(_, opts) require(self.conf_path).setup(opts) end
   end,
 }
@@ -105,7 +108,7 @@ local plugin_list = {
   gitsigns = {
     repo = 'lewis6991/gitsigns.nvim',
     main = 'gitsigns',
-    conf_path = 'kickstart.plugins.gitsigns',
+    config_path = 'kickstart.plugins.gitsigns',
     --opts = require 'kickstart.plugins.gitsigns',
     dependencies = {
       'folke/tokyonight.nvim',
@@ -114,7 +117,7 @@ local plugin_list = {
   {
     'mfussenegger/nvim-lint',
     main = 'lint',
-    conf_path = require 'kickstart.plugins.lint',
+    config_path = require 'kickstart.plugins.lint',
   },
 }
 

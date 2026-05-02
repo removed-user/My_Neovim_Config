@@ -82,17 +82,26 @@ return {
 
       -- See `:help telescope.builtin`
       local builtin = require 'telescope.builtin'
-      vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
-      vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
-      vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
-      vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
-      vim.keymap.set({ 'n', 'v' }, '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
-      vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
-      vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
-      vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
-      vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
-      vim.keymap.set('n', '<leader>sc', builtin.commands, { desc = '[S]earch [C]ommands' })
-      vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
+      vim.keymap.set('n', 'gh', builtin.help_tags, { desc = '[H]elp' })
+      vim.keymap.set('n', '<leader>h', builtin.help_tags, { desc = '[H]elp' })
+      vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[H]elp' })
+
+      vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[K]eymaps' })
+      vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[F]iles' })
+      vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = '[S]elect' })
+      vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[G]rep Buffer' })
+      vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[D]iagnostics' })
+
+      vim.keymap.set({ 'n', 'v' }, '<leader>sr', builtin.grep_string, { desc = '[R]ipgrep' })
+
+      vim.keymap.set('n', '<leader>s.', '', { desc = '[.] ' })
+      vim.keymap.set('n', '<leader>s.r', builtin.resume, { desc = '[R]esume Previous Search' })
+      vim.keymap.set('n', '<leader>s.f', builtin.oldfiles, { desc = 'Recent Files' })
+
+      vim.keymap.set('n', '<leader>sc', builtin.commands, { desc = '[C]ommands' })
+      vim.keymap.set('n', '<leader>so', builtin.vim_options, { desc = '[O]ptions' })
+      vim.keymap.set('n', '<leader>st', builtin.treesitter, { desc = '[T]reesitter' })
+      vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[" "] Find existing buffers' })
 
       -- This runs on LSP attach per buffer (see main LSP attach function in 'neovim/nvim-lspconfig' config for more info,
       -- it is better explained there). This allows easily switching between pickers if you prefer using something else!
@@ -133,7 +142,7 @@ return {
         -- You can pass additional configuration to Telescope to change the theme, layout, etc.
         builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
           winblend = 10,
-          previewer = false,
+          previewer = true,
         })
       end, { desc = '[/] Fuzzily search in current buffer' })
 
@@ -150,6 +159,9 @@ return {
         end,
         { desc = '[S]earch [/] in Open Files' }
       )
+
+      -- local out = vim.fn.system { "rg", "clone", "--filter=blob:none", "--branch=stable",lazyrepo, lazypath }
+      --      vim.keymap.set('n', '<leader>sn', function() os.execute(/bin/rg)    { cwd = vim.fn.stdpath 'config' } end, { desc = '[S]earch [N]eovim files' })
 
       -- Shortcut for searching your Neovim configuration files
       vim.keymap.set('n', '<leader>sn', function() builtin.find_files { cwd = vim.fn.stdpath 'config' } end, { desc = '[S]earch [N]eovim files' })

@@ -61,8 +61,8 @@ require('lazy').setup {
     --    require 'config.lazy.lazytables',
     -- NOTE: Plugins can be added via a link or github org/name. To run setup automatically, use `opts = {}`
     { 'NMAC427/guess-indent.nvim', opts = {} },
-    { 'brenoprata10/nvim-highlight-colors' },
-
+    { 'brenoprata10/nvim-highlight-colors', opts = {} },
+    { 'Vigemus/iron.nvim', opts = {}  },
     -- NOTE: Next step on your Neovim journey: Add/Configure additional plugins for Kickstart
     --
     -- require 'kickstart.plugins.debug',
@@ -150,7 +150,44 @@ require('lazy').setup {
       'tohtml',
       -- "tutor",
       -- "zipPlugin",
+      'compiler',
+      'bugreport',
     },
+    --[[
+  performance = {
+    rtp = {
+      disabled_plugins = {
+        "2html_plugin",
+        "tohtml",
+        "getscript",
+        "getscriptPlugin",
+        "gzip",
+        "logipat",
+        "netrw",
+        "netrwPlugin",
+        "netrwSettings",
+        "netrwFileHandlers",
+        "matchit",
+        "tar",
+        "tarPlugin",
+        "rrhelper",
+        "spellfile_plugin",
+        "vimball",
+        "vimballPlugin",
+        "zip",
+        "zipPlugin",
+        "tutor",
+        "rplugin",
+        "syntax",
+        "synmenu",
+        "optwin",
+        "compiler",
+        "bugreport",
+        "ftplugin",
+      }, 
+    },
+  },
+--]]
 
     require = true,
     ui = {

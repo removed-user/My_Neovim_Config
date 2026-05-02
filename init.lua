@@ -116,6 +116,8 @@ require 'config.core.options'
 -- [[ Basic Keymaps ]]
 require 'config.core.keymaps'
 
+require 'config.core.autocmds'
+
 -- [[ Install `lazy.nvim` plugin manager ]]
 require 'config.lazy.lazy-bootstrap'
 

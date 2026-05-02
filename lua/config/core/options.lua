@@ -3,9 +3,11 @@
 -- NOTE: You can change these options as you wish!
 -- See :help option-list
 
+vim.go.termguicolors = true
+
+vim.o.encoding = 'UTF-8'
 vim.o.helplang = 'en'
 vim.o.langmenu = 'en_US.UTF-8'
-vim.go.termguicolors = true
 -- Make line numbers default
 vim.o.number = true
 -- You can also add relative line numbers, to help with jumping.

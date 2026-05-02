@@ -8,6 +8,6 @@ return {
   -- See `:help ibl`
   main = 'ibl',
   ---@module 'ibl'
-  ---@type ibl.config
+  ---@module 'ibl.config'
   opts = {},
 }
