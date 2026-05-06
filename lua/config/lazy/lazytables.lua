@@ -87,14 +87,34 @@ split on / and on '.nvim'
 This sets main of username/repo.nvim to repo
 So all options and config can be set behind their plugin name
   --]]
+----------------------------------------------------------------------------------------------------------
 
+--[[
+ function requirer.handler(error)
+  local message = 'Error loading Config: ' .. debug.traceback(error)
+  vim.notify(message, vim.log.levels.ERROR)
+end
+
+ function requirer.safe_require(config_path)
+  if not config_path then
+    vim.notify('Warning: No config_path defined for ' .. 'config_path', vim.log.levels.WARN)
+    return nil
+  else
+    local status_okay, module = xpcall(require, handler, config_path)
+    if status_okay then return config_path end
+  end
+end
+    --]]
 local defaults = {
   enabled = true,
   lazy = true,
   main = function(self) return self.repo and self.repo:match('.*/(.*)"'):gsub('%.nvim$', '') or nil end,
+  config_path =
+
+  --  local   status_okay, external_opts = pcall(require, config_path),
   config = function(self)
-    if not self.conf_path then return nil end
-    return function(_, opts) require(self.conf_path).setup(opts) end
+    if not self.config_path then return nil end
+    return function(_, opts) require(self.config_path).setup(opts) end
   end,
 }
 
@@ -105,7 +125,7 @@ local plugin_list = {
   gitsigns = {
     repo = 'lewis6991/gitsigns.nvim',
     main = 'gitsigns',
-    conf_path = 'kickstart.plugins.gitsigns',
+    config_path = 'kickstart.plugins.gitsigns',
     --opts = require 'kickstart.plugins.gitsigns',
     dependencies = {
       'folke/tokyonight.nvim',
@@ -114,7 +134,7 @@ local plugin_list = {
   {
     'mfussenegger/nvim-lint',
     main = 'lint',
-    conf_path = require 'kickstart.plugins.lint',
+    config_path = 'kickstart.plugins.lint',
   },
 }
 
@@ -123,18 +143,18 @@ local Blueprint = {}
 local function make_plugin_metatable(default_vals)
   return {
     __index = function(current_table, key)
-      local plugin_default_key = default_vals[key]
+      local copy_key_from_default = default_vals[key]
 
-      if type(plugin_default_key) == 'function' then return plugin_default_key(current_table) end
+      if type(copy_key_from_default) == 'function' then return copy_key_from_default(current_table) end
 
-      if type(plugin_default_key) == 'table' then
+      if type(copy_key_from_default) == 'table' then
         local nested = {}
         rawset(table, key, nested)
-        setmetatable(nested, make_plugin_metatable(plugin_default_key))
+        setmetatable(nested, make_plugin_metatable(copy_key_from_default))
         return nested
       end
 
-      return plugin_default_key
+      return copy_key_from_default
     end,
   }
 end
@@ -155,6 +175,15 @@ local function flatten(table)
   end
   return result
 end
+-- end
+--   for key, plugin_path in pairs(table) do
+--     if key == "config_path" then
+--         if not key then
+--           vim.notify("Warning: No config_path defined for " .. key[1], vim.log.levels.WARN)
+--           return
+--         end
+--     local okay, plugin_path = pcall(require, plu)
+--   end
 
 Blueprint.registry = {}
 Blueprint.specs = {}
@@ -185,6 +214,7 @@ print(vim.inspect(Blueprint.registry['name']))
 print '###SEPERATOR###'
 print(type(Blueprint.specs[1]))
 print '###SEPERATOR###'
+print(vim.inspect(safe_require()))
 print(#Blueprint.specs)
 print '###SEPERATOR###'
 print(#Blueprint.specs[1])
@@ -254,8 +284,3 @@ print '###SEPERATOR###'
 --  Lang_Specs
 --     config/lazy/lazydev.lua
 --     intelligence/lspconfig/none-ls.lua
--- [[
--- M.config = {}
--- setmetatable(M.config, make_plugin_metatable(defaults))
--- return M
---]]

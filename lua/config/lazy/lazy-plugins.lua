@@ -62,7 +62,6 @@ require('lazy').setup {
     -- NOTE: Plugins can be added via a link or github org/name. To run setup automatically, use `opts = {}`
     { 'NMAC427/guess-indent.nvim', opts = {} },
     { 'brenoprata10/nvim-highlight-colors', opts = {} },
-    { 'Vigemus/iron.nvim', opts = {}  },
     -- NOTE: Next step on your Neovim journey: Add/Configure additional plugins for Kickstart
     --
     -- require 'kickstart.plugins.debug',
@@ -92,6 +91,7 @@ require('lazy').setup {
         'folke/tokyonight.nvim',
       },
     },
+    { 'rafcamlet/nvim-luapad' },
 
     --   --kickstart/plugins/gitsigns
     --   require 'kickstart.plugins.gitsigns',
@@ -189,6 +189,10 @@ require('lazy').setup {
   },
 --]]
 
+    defaults = { lazy = true },
+    install = {
+      colorscheme = { 'tokyonight' },
+    },
     require = true,
     ui = {
       icons = vim.g.have_nerd_font and {} or {

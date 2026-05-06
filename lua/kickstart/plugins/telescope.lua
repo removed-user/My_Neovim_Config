@@ -162,9 +162,10 @@ return {
 
       -- local out = vim.fn.system { "rg", "clone", "--filter=blob:none", "--branch=stable",lazyrepo, lazypath }
       --      vim.keymap.set('n', '<leader>sn', function() os.execute(/bin/rg)    { cwd = vim.fn.stdpath 'config' } end, { desc = '[S]earch [N]eovim files' })
+      --vim.keymap.set({ 'n', 'v' }, '<leader>sr', builtin.grep_string, { desc = '[R]ipgrep' })
 
       -- Shortcut for searching your Neovim configuration files
-      vim.keymap.set('n', '<leader>sn', function() builtin.find_files { cwd = vim.fn.stdpath 'config' } end, { desc = '[S]earch [N]eovim files' })
+      vim.keymap.set('n', '<leader>sn', function() builtin.find_files { cwd = vim.fn.stdpath 'config' } end, { desc = '[N]eovim Files' })
     end,
   },
 }

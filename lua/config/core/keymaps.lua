@@ -70,4 +70,29 @@ vim.keymap.set('n', '<leader>cb', ':cd -<CR>:pwd<CR>', { desc = 'cd back' })
 
 vim.keymap.set('n', '<leader>;', '', { desc = 'Exec bindings' })
 
+vim.keymap.set('n', '<A-h>', '<Home>', { desc = 'Jump Start' })
+vim.keymap.set('n', '<A-[>', '<Home>', { desc = 'Jump Start' })
+vim.keymap.set('n', '<A-l>', '<End>', { desc = 'Jump End' })
+vim.keymap.set('n', '<A-]>', '<End>', { desc = 'Jump End' })
+
+vim.keymap.set('n', '<A-j>', '{', { desc = ' paragraph' })
+vim.keymap.set('n', '<A-k>', '}', { desc = ' paragraph' })
+
+vim.keymap.set('i', '<A-h>', '<left>', { desc = 'Add "Alt-Key" movement to insert mode' })
+vim.keymap.set('i', '<A-j>', '<down>', { desc = 'Add "Alt-key" movement to insert mode' })
+vim.keymap.set('i', '<A-k>', '<up>', { desc = 'Add "Alt-Key" movement to insert mode' })
+vim.keymap.set('i', '<A-l>', '<right>', { desc = 'Add "Alt-Key" movement to insert mode' })
+
+--vim.keymap.set('r', '<A-h>', '<left>', { desc = 'Add "Alt-Key" movement to replace mode' })
+--vim.keymap.set('r', '<A-j>', '<down>', { desc = 'Add "Alt-key" movement to replace mode' })
+--vim.keymap.set('r', '<A-k>', '<up>', { desc = 'Add "Alt-Key" movement to replace mode' })
+--vim.keymap.set('r', '<A-l>', '<right>', { desc = 'Add "Alt-Key" movement to replace mode' })
+
+vim.keymap.set('n', 'k', '<up>', { desc = 'map k up' })
+vim.keymap.set('n', 'j', '<down>', { desc = 'map j down' })
+
+-- vim.keymap.set('n', '<C-j>', \'\', { desc = 'Jump Start' })
+-- vim.keymap.set('n', '<C-k>', \'\', { desc = 'Jump End' })
 -- vim: ts=2 sts=2 sw=2 et
+-- add a keymap shortcut to save file
+vim.keymap.set({ 'n', 'i', 'v' }, '<C-s>', '<cmd> w <cr>')

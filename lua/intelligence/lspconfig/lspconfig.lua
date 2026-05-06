@@ -109,14 +109,21 @@ return {
         -- rust_analyzer = {},
         -- html = {},
         -- cssls = {},
-        --
+        -- nixd = {},
+        mesonlsp = {
+
+          filetypes = { 'meson', 'build' },
+        },
+
         stylua = {}, -- Used to format Lua code
+
         nil_ls = {
           cmd = { 'nil' },
-          filetypes = { '.nix' },
+          filetypes = { 'nix' },
           root_markers = { 'flake.nix', '.git' },
           single_file_support = true,
         },
+
         lua_ls = {
           settings = {
             Lua = {
