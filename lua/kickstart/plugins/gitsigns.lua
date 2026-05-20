@@ -24,6 +24,9 @@ return {
   ---@type Gitsigns.Config
 
   opts = {
+    -- Highlight text changes in line
+    linehl = false, -- Highlight whole lines in diff
+    word_diff = true, -- Track individual words in a line
     signs = {
 
       add = {

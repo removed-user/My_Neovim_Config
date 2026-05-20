@@ -19,10 +19,17 @@ local diff_colors = {
   word_change   = '#00D2FF99', -- Bright Electric Blue (60% Opacity)
 }
 
--- Apply full line backgrounds
+-- Make the GitSigns line highlights follow primary line highlights
+vim.api.nvim_set_hl(0, 'GitSignsAddLn',     { link = 'DiffAdd' })
+vim.api.nvim_set_hl(0, 'GitSignsDeleteLn',  { link = 'DiffDelete' })
+vim.api.nvim_set_hl(0, 'GitSignsChangeLn',  { link = 'DiffChange' })
+
+--[[
+Apply full line backgrounds
 vim.api.nvim_set_hl(0, 'GitSignsAddLn',    { bg = diff_colors.line_add })
 vim.api.nvim_set_hl(0, 'GitSignsDeleteLn', { bg = diff_colors.line_delete })
 vim.api.nvim_set_hl(0, 'GitSignsChangeLn', { bg = diff_colors.line_change })
+--]]
 
 -- Apply word-level overrides
 -- This makes added words green

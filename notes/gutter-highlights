@@ -1,0 +1,8 @@
+## Gutter and Column Groups: These groups handle the interface elements surrounding the diffed text:
+CursorLine: Highlight for the line currently under the cursor.
+
+>
+SignColumn: The gutter where Gitsigns and diff indicators appear.
+
+FoldColumn: The gutter showing folded, unchanged code blocks.
+Folded: Text shown on closed, folded lines.

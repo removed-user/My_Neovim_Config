@@ -61,7 +61,8 @@ require('lazy').setup {
     --    require 'config.lazy.lazytables',
     -- NOTE: Plugins can be added via a link or github org/name. To run setup automatically, use `opts = {}`
     { 'NMAC427/guess-indent.nvim', opts = {} },
-    { 'brenoprata10/nvim-highlight-colors', opts = {} },
+    { 'brenoprata10/nvim-highlight-colors', opts = require 'config.colors.nvim-highlight-colors' },
+
     -- NOTE: Next step on your Neovim journey: Add/Configure additional plugins for Kickstart
     --
     -- require 'kickstart.plugins.debug',
@@ -199,7 +200,7 @@ require('lazy').setup {
 
     defaults = { lazy = true },
     install = {
-      colorscheme = { 'tokyonight' },
+      colorscheme = { 'tokyonight-storm' },
     },
     require = true,
     ui = {

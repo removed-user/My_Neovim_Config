@@ -77,6 +77,9 @@ vim.o.scrolloff = 10
 vim.o.confirm = true
 --
 
+-- Make the built-in "Unified Diff Format" highlights follow primary highlights
+vim.api.nvim_set_hl(0, 'DiffAdded', { link = 'DiffAdd' })
+vim.api.nvim_set_hl(0, 'DiffRemoved', { link = 'DiffDelete' })
 -- #vim.opt.language = 'ctype en_US.UTF-8'
 -- #vim.opt.language = 'time en_US.UTF-8'
 -- #vim.opt.language = 'collate en_US.UTF-8'
