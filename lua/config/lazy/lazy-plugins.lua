@@ -86,10 +86,18 @@ require('lazy').setup {
     {
       'lewis6991/gitsigns.nvim',
       main = 'gitsigns',
-      opts = { require 'kickstart.plugins.gitsigns' },
       dependencies = {
         'folke/tokyonight.nvim',
       },
+      -- config = function()
+      -- require("").setup
+      -- require
+      -- end,
+
+      config = function()
+        local options = require 'kickstart.plugins.gitsigns'
+        require('gitsigns').setup(options.opts)
+      end,
     },
     { 'rafcamlet/nvim-luapad' },
 

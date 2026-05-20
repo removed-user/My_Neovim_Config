@@ -1,4 +1,3 @@
--- LSP Plugins
 ---@module 'lazy'
 ---@type LazySpec
 return {
@@ -102,7 +101,7 @@ return {
       local servers = {
         -- NOTE: The '.' actually indicates directory hierarchies, and require works on the srvname.lua in configs
         -- srvname = require('configs.srvname')
-        --
+
         -- clangd = {},
         -- gopls = {},
         -- pyright = {},
@@ -110,6 +109,10 @@ return {
         -- html = {},
         -- cssls = {},
         -- nixd = {},
+        -- scheme_langserver = {},
+        -- bashls = {},
+        -- makels = {},
+        neocmakelsp = {},
         mesonlsp = {
 
           filetypes = { 'meson', 'build' },
@@ -143,7 +146,6 @@ return {
         'marksman',
         -- 'yaml',
         -- 'yara',
-
         --  'prettierd',
       })
       require('mason-tool-installer').setup {

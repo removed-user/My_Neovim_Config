@@ -1,6 +1,6 @@
 return {
   'romus204/tree-sitter-manager.nvim',
-  dependencies = {},
+  dependencies = { 'nvim-lua/plenary.nvim' },
   config = function()
     require('tree-sitter-manager').setup {
       -- Default Options
@@ -8,6 +8,8 @@ return {
       ensure_installed = {
         'bash',
         'c',
+        'cpp',
+        'awk',
         'diff',
         'git_config',
         'git_rebase',
@@ -15,10 +17,15 @@ return {
         'gitcommit',
         'html',
         'hyprlang',
+        'html',
+        'css',
         'json',
+        'vim',
+        'vimdoc',
         'lua',
         'luadoc',
         'make',
+        'cmake',
         'markdown',
         'markdown_inline',
         'meson',
