@@ -23,7 +23,7 @@
 --[[ Refactor for lazy evaluation, proper "spec" setup and options propagation
 
     OPTION 1
-
+Messy
      return {
       'repo/plugin',
       opts = {
@@ -42,7 +42,6 @@
       }
 
     OPTION 2
-
       You have total control over the spec here, but its more complicated.
 
      return {
@@ -63,6 +62,13 @@ require('lazy').setup {
     { 'NMAC427/guess-indent.nvim', opts = {} },
     { 'brenoprata10/nvim-highlight-colors', opts = require 'config.colors.nvim-highlight-colors' },
 
+    { 'norcalli/nvim-colorizer.lua', opts = {} },
+    { 'rafcamlet/nvim-luapad' },
+    {
+      'mfussenegger/nvim-lint',
+      opts = { require 'kickstart.plugins.lint' },
+      main = 'lint',
+    },
     -- NOTE: Next step on your Neovim journey: Add/Configure additional plugins for Kickstart
     --
     -- require 'kickstart.plugins.debug',
@@ -90,18 +96,11 @@ require('lazy').setup {
       dependencies = {
         'folke/tokyonight.nvim',
       },
-      -- config = function()
-      -- require("").setup
-      -- require
-      -- end,
-
       config = function()
         local options = require 'kickstart.plugins.gitsigns'
         require('gitsigns').setup(options.opts)
       end,
     },
-    { 'rafcamlet/nvim-luapad' },
-
     --   --kickstart/plugins/gitsigns
     --   require 'kickstart.plugins.gitsigns',
 
@@ -110,12 +109,6 @@ require('lazy').setup {
     require 'kickstart.plugins.conform',
     --  kickstart/plugins/lint
 
-    {
-      'mfussenegger/nvim-lint',
-      main = 'lint',
-
-      opts = { require 'kickstart.plugins.lint' },
-    },
     require 'kickstart.plugins.lint',
     --  kickstart/plugins/indent_line
     -- require 'kickstart.plugins.indent_line',
