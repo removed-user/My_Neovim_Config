@@ -1,0 +1,9 @@
+Diff mode:
+All hl-groups for diffs just add ^hl- to name 
+DiffAdd            Added line
+DiffChange      Changed line
+DiffDelete      Deleted line
+
+#Changed-lines
+DiffText
+DiffTextAdd

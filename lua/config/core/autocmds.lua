@@ -9,9 +9,15 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
   callback = function() vim.hl.on_yank() end,
 })
---vim.api.nvim_set_hl(vim.api.)
+--vim.api.nvim_set_hl(vim.api)
 vim.api.nvim_set_hl(0, 'Visual', {
   bg = '#3e4452',
   fg = '#ffffff',
   bold = true,
+})
+
+vim.api.nvim_create_autocmd('VimEnter', {
+
+  desc = 'Set colorscheme on startup through Autocommands',
+  callback = function() vim.cmd 'colorscheme tokyonight-storm' end,
 })
