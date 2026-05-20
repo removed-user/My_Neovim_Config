@@ -6,6 +6,21 @@ require('gitsigns').setup({
   word_diff = true, -- Tracks specific words within a line
 })
 
+
+local truly_dim = {
+  -- Base color is already dark/muddy, plus 25% transparency
+  line_add    = '#233B2640', -- Smoky Dim Green
+  line_delete = '#4A232540', -- Smoky Dim Red
+  line_change = '#1A2F4C40', -- Smoky Dim Blue
+  },
+local grayscale_tint = {
+  line_add    = '#2D352E33', -- Barely visible green-gray
+  line_delete = '#362D2D33', -- Barely visible red-gray
+  line_change = '#2D313633', -- Barely visible blue-gray
+}
+
+
+
 -- Color scheme definition
 local diff_colors = {
   -- Full line backgrounds (Dim / Translucent)
