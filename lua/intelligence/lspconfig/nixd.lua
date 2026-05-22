@@ -1,27 +1,27 @@
-local lspconfig = require('lspconfig')
-
-lspconfig.nixd.setup({
-  cmd = { "nixd" },
-  settings = {
-    -- The main wrapper key expected by nixd
-    nixd = {
-      nixpkgs = {
-        -- Feeds packages and lib completions into the LSP
-        expr = 'import (builtins.getFlake (toString ./. )).inputs.nixpkgs { }',
-      },
-      formatting = {
-        command = { "alejandra" }, -- options: "alejandra", "nixfmt", or "nixpkgs-fmt"
-      },
-      options = {
-        -- For NixOS systems defined in your flake-parts
-        nixos = {
-          expr = '(builtins.getFlake (toString ./. )).nixosConfigurations.YOUR_HOSTNAME.options',
+return {
+  vim.lsp.config('nixd', {
+    --
+    cmd = { '/nix/var/nix/profiles/default/bin/nixd' },
+    filetypes = { 'nix' },
+    root_markers = { 'flake.nix' },
+    --
+    settings = {
+      -- The main wrapper key expected by nixd
+      nixd = {
+        nixpkgs = {
+          -- Feeds packages and lib completions into the LSP
+          expr = 'import (builtins.getFlake (toString ./. )).inputs.nixpkgs { }',
         },
-        -- For Home Manager definitions
-        home_manager = {
-          expr = '(builtins.getFlake (toString ./. )).homeConfigurations.YOUR_USERNAME.options',
+        formatting = {
+          command = { 'alejandra' }, -- options: "alejandra", "nixfmt", or "nixpkgs-fmt"
         },
+        -- options = {
+        -- flake-parts = {
+        -- expr = '(builtins.getFlake (toString ./.)).'
+        -- }
+        -- },
       },
     },
-  },
-})
+  }),
+  vim.lsp.enable 'nixd',
+}
