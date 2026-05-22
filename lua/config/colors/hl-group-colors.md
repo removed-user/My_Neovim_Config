@@ -7,17 +7,6 @@ require('gitsigns').setup({
 })
 
 
-local truly_dim = {
-  -- Base color is already dark/muddy, plus 25% transparency
-  line_add    = '#233B2640', -- Smoky Dim Green
-  line_delete = '#4A232540', -- Smoky Dim Red
-  line_change = '#1A2F4C40', -- Smoky Dim Blue
-  },
-local grayscale_tint = {
-  line_add    = '#2D352E33', -- Barely visible green-gray
-  line_delete = '#362D2D33', -- Barely visible red-gray
-  line_change = '#2D313633', -- Barely visible blue-gray
-}
 
 
 
@@ -32,6 +21,13 @@ local diff_colors = {
   word_add      = '#00FF877F', -- Bright Vibrant Green (50% Opacity)
   word_delete   = '#FF4D4D7F', -- Bright Vibrant Red (50% Opacity)
   word_change   = '#00D2FF99', -- Bright Electric Blue (60% Opacity)
+
+Smoky_Dim_Green = '#233B2640', -- Smoky_Dim_Green
+Smoky_Dim_Red   = '#4A232540', -- Smoky_Dim_Red
+Smoky_Dim_Blue  = '#1A2F4C40', -- Smoky_Dim_Blue
+  Barely_visible_green-gray = '#2D352E33', -- Barely_visible_green-gray
+  Barely_visible_red-gray  = '#362D2D33', -- Barely_visible_red-gray
+  Barely_visible_blue-gray = '#2D313633', -- Barely_visible_blue-gray
 }
 
 -- Make the GitSigns line highlights follow primary line highlights
