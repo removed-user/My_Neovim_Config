@@ -15,11 +15,14 @@ return {
         formatting = {
           command = { 'alejandra' }, -- options: "alejandra", "nixfmt", or "nixpkgs-fmt"
         },
-        -- options = {
-        -- flake-parts = {
-        -- expr = '(builtins.getFlake (toString ./.)).'
-        -- }
-        -- },
+        options = {
+          -- ['flake-parts'] = {
+          --   expr = '(builtins.getFlake (toString ./.)).debug.options',
+          -- },
+          ['flake-parts-persystem'] = {
+            expr = '(builtins.getFlake (toString ./.)).currentSystem.options',
+          },
+        },
       },
     },
   }),
