@@ -62,7 +62,7 @@ require('lazy').setup {
     { 'NMAC427/guess-indent.nvim', opts = {} },
     { 'brenoprata10/nvim-highlight-colors', opts = require 'config.colors.nvim-highlight-colors' },
 
-    { 'norcalli/nvim-colorizer.lua', opts = {} },
+    { 'norcalli/nvim-colorizer.lua', opts = require 'config.colors.nvim-colorizer' },
     { 'rafcamlet/nvim-luapad' },
     {
       'mfussenegger/nvim-lint',
