@@ -16,6 +16,14 @@ vim.api.nvim_set_hl(0, 'Visual', {
   bold = true,
 })
 
+--[[
+ Thought there was a <> mapping for capslock, would have to add keycode check code, not wanting to fuck with it rn
+
+vim.api.nvim_create_autocmd('InsertLeave', {
+    desc = 'An AuCmd to automatically turn off caps lock when leaving insert',
+  callback = 't',
+})
+--]]
 vim.api.nvim_create_autocmd('VimEnter', {
 
   desc = 'Set colorscheme on startup through Autocommands',
