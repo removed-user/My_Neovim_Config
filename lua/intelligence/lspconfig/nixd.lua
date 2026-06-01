@@ -16,6 +16,9 @@ return {
           command = { 'alejandra' }, -- options: "alejandra", "nixfmt", or "nixpkgs-fmt"
         },
         options = {
+          nixos = {
+            expr = '{}',
+          },
           -- ['flake-parts'] = {
           --   expr = '(builtins.getFlake (toString ./.)).debug.options',
           -- },
