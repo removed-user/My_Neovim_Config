@@ -83,6 +83,6 @@ vim.api.nvim_set_hl(0, 'DiffRemoved', { link = 'DiffDelete' })
 -- #vim.opt.language = 'ctype en_US.UTF-8'
 -- #vim.opt.language = 'time en_US.UTF-8'
 -- #vim.opt.language = 'collate en_US.UTF-8'
-opts.rocks.hererocks = false,
+-- opts.rocks.hererocks = false
 --- editorconfig.charset = utf8
 -- vim: ts=2 sts=2 sw=2 et
