@@ -25,10 +25,11 @@ vim.api.nvim_create_autocmd('InsertLeave', {
 })
 --]]
 
-vim.api.nvim_create_autocmd('VimEnter', {
-  desc = 'Set colorscheme on startup through Autocommands',
-  callback = function() vim.cmd 'colorscheme tokyonight-storm' end,
-})
+-- #FIXME
+-- vim.api.nvim_create_autocmd('VimEnter', {
+--   desc = 'Set colorscheme on startup through Autocommands',
+--   callback = function() vim.cmd 'colorscheme tokyonight-storm' end,
+-- })
 
 -- vim.api.nvim_create_autocmd('FileType', {
 -- pattern = { "bash", "sh" },
