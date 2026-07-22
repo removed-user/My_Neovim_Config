@@ -80,7 +80,11 @@ require('lazy').setup {
     --kickstart/plugins/telescope
     require 'kickstart.plugins.telescope',
     --kickstart/plugins/mini
-    require 'kickstart.plugins.mini-nvim',
+
+    --config/plugins/kickstart/mini/main
+    require 'config.plugins.kickstart.mini.main',
+    -- require 'kickstart.plugins.mini-nvim',
+
     --kickstart/plugins/which-key
     require 'kickstart.plugins.which-key',
 
