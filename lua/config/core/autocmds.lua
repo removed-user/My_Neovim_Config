@@ -24,8 +24,15 @@ vim.api.nvim_create_autocmd('InsertLeave', {
   callback = 't',
 })
 --]]
-vim.api.nvim_create_autocmd('VimEnter', {
 
+vim.api.nvim_create_autocmd('VimEnter', {
   desc = 'Set colorscheme on startup through Autocommands',
   callback = function() vim.cmd 'colorscheme tokyonight-storm' end,
 })
+
+-- vim.api.nvim_create_autocmd('FileType', {
+-- pattern = { "bash", "sh" },
+--   desc = 'Highlight when yanking (copying) text',
+--   group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
+--   callback = function() vim.hl.on_yank() end,
+-- })
