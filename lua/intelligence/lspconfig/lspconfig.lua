@@ -136,7 +136,7 @@ return {
           },
         },
       }
-      require 'intelligence.lspconfig.nixd'
+--      require 'intelligence.lspconfig.nixd'
       -- Ensure the servers and tools above are installed
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
