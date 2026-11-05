@@ -4,7 +4,7 @@ print(tostring(vim.version()))
 local version_str = string.format("v%d.%d.%d", v.major, v.minor, v.patch)
 
 local nvim_url = 'https://github.com/neovim/neovim.git'
-  
+  git@github.com:neovim/neovim.git
 -- Initialize a blank local Git repository
 git init
 git remote add origin <repo-url>
