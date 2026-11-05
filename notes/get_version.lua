@@ -1,4 +1,16 @@
 function ensure_correct_rtp()
+
+## prepend
+vim.opt.rtp:prepend("/path/to/dir")
+## append
+vim.opt.rtp:append("/path/to/dir")
+## remove
+vim.opt.rtp:remove("/path/to/dir")
+## inspect
+print(vim.inspect(vim.opt.rtp:get()))
+
+
+
   
 print(tostring(vim.version()))
 local version_str = string.format("v%d.%d.%d", v.major, v.minor, v.patch)
