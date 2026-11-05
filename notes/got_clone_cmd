@@ -1,0 +1,1 @@
+git clone --no-single-branch --filter=blob:none --sparse
