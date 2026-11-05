@@ -1,0 +1,16 @@
+git clone --no-single-branch --filter=blob:none --sparse
+
+-- Initialize a blank local Git repository
+git init
+git remote add origin <repo-url>
+
+-- Enable the sparse-checkout configuration flag
+git config core.sparseCheckout true
+
+-- Define the paths to include (writes to the sparse-checkout config file)
+-- Use 'git sparse-checkout set' for modern Git, or append manually:
+echo "path/to/dir1/" >> .git/info/sparse-checkout
+echo "path/to/dir2/" >> .git/info/sparse-checkout
+
+-- Pull the files from the remote branch
+git pull origin <branch-name>
