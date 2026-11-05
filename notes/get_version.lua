@@ -1,0 +1,1 @@
+print(tostring(vim.version()))
