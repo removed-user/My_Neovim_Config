@@ -9,6 +9,7 @@ return {
         -- Load luvit types when the `vim.uv` word is found
         { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
         { path = '${3rd}/busted/library', words = { 'describe' } },
+        { path = "${3rd}/luassert/library", words = { "assert" } },
       },
     },
   },
