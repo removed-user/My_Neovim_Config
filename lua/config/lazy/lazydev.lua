@@ -18,7 +18,6 @@ integrations = {
     -- same, but for Coq
     coq = true,
   },
-
       
       library = {
         --#FIXME: Needs refactor to use lazy, then load path here 
@@ -26,9 +25,10 @@ integrations = {
         { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
         { path = '${3rd}/busted/library', words = { 'describe' } },
         { path = "${3rd}/luassert/library", words = { "assert" } },
-        -- lfs
-        -- ffi-reflect
-        
+         -- 1. LuaFileSystem (bundled in lua_ls as ${3rd}/lfs/library, or use "lfs/library" if cloned)
+      { path = "${3rd}/lfs/library", mods = { "lfs" }, words = { "lfs%." } },
+      -- 2. ffi-reflect (assuming cloned as LuaCATS/ffi-reflect or similar)
+      { path = "${3rd}/ffi-reflect/library", mods = { "reflect", "ffi-reflect", "ffi_reflect" }, words = { "reflect%.typeof", "reflect%.getmetatable" } }, 
       },
     },
   },
