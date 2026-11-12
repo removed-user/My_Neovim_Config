@@ -5,11 +5,14 @@ return {
     ft = 'lua',
     opts = {
       library = {
-        -- See the configuration section for more details
-        -- Load luvit types when the `vim.uv` word is found
+        --#FIXME: Needs refactor to use lazy, then load path here 
+        -- Load luvit types when the `vim.uv` word  
         { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
         { path = '${3rd}/busted/library', words = { 'describe' } },
         { path = "${3rd}/luassert/library", words = { "assert" } },
+        -- lfs
+        -- ffi-reflect
+        
       },
     },
   },
