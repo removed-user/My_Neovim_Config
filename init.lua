@@ -110,22 +110,4 @@ vim.g.loaded_python3_provider = 0
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = false
 
-require 'init.init'
--- [[ Setting options ]]
-require 'config.core.globals'
-
-require 'config.core.options'
-
--- [[ Basic Keymaps ]]
-require 'config.core.keymaps'
-
-require 'config.core.autocmds'
-
--- [[ Install `lazy.nvim` plugin manager ]]
-require 'config.lazy.lazy-bootstrap'
-
--- [[ Configure and install plugins ]]
-require 'config.lazy.lazy-plugins'
-
--- The line beneath this is called `modeline`. See `:help modeline`
--- vim: ts=2 sts=2 sw=2 et
+require 'init.core'
