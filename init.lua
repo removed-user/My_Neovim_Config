@@ -110,6 +110,7 @@ vim.g.loaded_python3_provider = 0
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = false
 
+require 'init.init'
 -- [[ Setting options ]]
 require 'config.core.globals'
 
