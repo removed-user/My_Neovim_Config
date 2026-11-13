@@ -19,7 +19,7 @@ local clone_out = vim.fn.system {
     nvimrepo,
     runtime_path,
   }
-  if vim.v.shell_error ~= 0 then error('Error cloning runtime files for' .. nvim_version .. clone_out) end
+  if vim.v.shell_error ~= 0 then error('Error cloning runtime files for ' .. nvim_version .. clone_out) end
 end
 
 ---@type vim.Option
