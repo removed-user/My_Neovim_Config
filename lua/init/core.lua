@@ -11,7 +11,7 @@ require 'config.core.autocmds'
 -- [[ Re-Install runtime files ]]
 require 'init.runtimepath'
 -- [[ Install `lazy.nvim` plugin manager ]]
-require 'config.lazy.lazy-bootstrap'
+require 'init.lazy-bootstrap'
 
 -- [[ Configure and install plugins ]]
 require 'config.lazy.lazy-plugins'
