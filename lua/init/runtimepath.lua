@@ -6,9 +6,20 @@ local runtime_path = runtime_path_root .. '/' .. nvim_version
 
 if not (vim.uv or vim.loop).fs_stat(runtime_path) then
     local nvimrepo = 'https://github.com/neovim/neovim.git'
+    local fetchOpts = '+refs/tags/' .. nvim_version .. ':refs/tags/' .. nvim_version
     vim.fn.system { 'git', 'init', runtime_path,}
-    vim.fn.system { 'git', '-C', runtime_path, 'remote', 'add','origin', nvimrepo }
     vim.fn.system { 'git', '-C', runtime_path, 'sparse-checkout', 'set','runtime' }
+    vim.fn.system { 'git', '-C', runtime_path, 'remote', 'add','origin', nvimrepo }
+        
+    
+    vim.fn.system { 'git', '-C', runtime_path, 'config', 'remote.origin.tagOpt', '--no-tags' }
+    vim.fn.system { 'git', '-C', runtime_path, 'config', 'remote.origin.fetch', fetchOpts    }
+
+        
+ 
+ 
+
+    
 local clone_out = vim.fn.system {
     'git',
     'clone',
