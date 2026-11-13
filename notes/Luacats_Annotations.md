@@ -1,0 +1,26 @@
+### Luacats Annotations
+- @alias
+- @as
+- @async
+- @cast
+- @class
+- @deprecated
+- @diagnostic
+- @enum
+- @field
+- @generic
+- @meta
+- @module
+- @nodiscard
+- @operator
+- @overload
+- @package
+- @param
+- @private
+- @protected
+- @return
+- @see
+- @source
+- @type
+- @vararg
+- @version
