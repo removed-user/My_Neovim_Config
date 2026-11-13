@@ -7,7 +7,15 @@ local nvim_version = string.format('v%d.%d.%d', v.major, v.minor, v.patch)
 local runtime_path_root = vim.fn.stdpath 'data' .. '/runtime/'
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   local nvimrepo = 'https://github.com/neovim/neovim.git'
-  local out = vim.fn.system { 'git', 'clone', '--filter=blob:none', '--branch=stable', lazyrepo, lazypath }
+local clone_out = vim.fn.system {
+    'git', 'clone',
+    '--depth=1',
+    '--filter=blob:none',
+    '--sparse',
+    '--branch', nvim_version,
+    nvimrepo,
+    target_path,
+  }
   if vim.v.shell_error ~= 0 then error('Error cloning lazy.nvim:\n' .. out) end
 end
 
