@@ -55,10 +55,13 @@ Messy
       end,
      }
  --]]
+local vimpack_shim = (function() local ok, res = pcall(require, "patches.vimpack_shim") return (ok and type(res) == "table") and res or {} end)()
+
 require('lazy').setup {
   spec = {
     --    require 'config.lazy.lazytables',
     -- NOTE: Plugins can be added via a link or github org/name. To run setup automatically, use `opts = {}`
+    vimpack_shim,
     { 'NMAC427/guess-indent.nvim', opts = {} },
     { 'brenoprata10/nvim-highlight-colors', opts = require 'config.colors.nvim-highlight-colors' },
 
