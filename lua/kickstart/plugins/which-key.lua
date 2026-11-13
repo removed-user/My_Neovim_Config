@@ -5,10 +5,15 @@
 -- For example, in the following configuration, we use:
 --  event = 'VimEnter'
 --
--- which loads which-key before all the UI elements are loaded. Events can be
--- normal autocommands events (`:help autocmd-events`).
+-- which loads which-key before all the UI elements are loaded. 
+-- Events can be normal autocommands events (`:help autocmd-events`).
 --
 -- By using the opts key, the plugin loads, then the configuration run on usage
+
+--FIXME: factor keybinds out into a seperate file, that returns them as a module, 
+-- That way you can centralize keybind tables to a central location
+    -- While also ensuring that you pass-in/load keybinds of other active/loaded plugins
+
 
 ---@module 'lazy'
 ---@type LazySpec
