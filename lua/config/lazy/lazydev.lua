@@ -3,7 +3,7 @@ return {
 { 'LuaCATS/luassert', name = 'types_luassert', lazy = true },
 { 'LuaCATS/busted', name = 'types_busted', lazy = true },
 { 'LuaCATS/luv', name = 'types_luv', lazy = true },
-{ 'LuaCATS/lfs', name = 'types_lfs', lazy = true },  
+{ 'LuaCATS/luafilesystem', name = 'types_luafilesystem', lazy = true },  
   {
     'folke/lazydev.nvim',
     -- only load on lua files
@@ -28,7 +28,7 @@ integrations = {
 { path = 'types_luv/library', words = { 'vim%.uv' } },
 { path = 'types_busted/library', words = { 'describe' } },
 { path = 'types_luassert/library', words = { 'assert' } },
-{ path = 'types_lfs/library', mods = { 'lfs' }, words = { 'lfs%.' } },
+{ path = 'types_luafilesystem/library', mods = { 'lfs' }, words = { 'lfs%.' } },
       },
     },
   },
