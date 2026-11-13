@@ -1,4 +1,9 @@
 return {
+{ "LuaCATS/ffi-reflect", name = "ffi-reflect", lazy = true },
+{ "LuaCATS/luassert", name = "luassert", lazy = true },
+{ "LuaCATS/busted", name = "busted", lazy = true },
+{ "LuaCATS/luv", name = "luv", lazy = true },
+{ "LuaCATS/lfs", name = "lfs", lazy = true },  
   {
     'folke/lazydev.nvim',
     -- only load on lua files
@@ -18,13 +23,6 @@ integrations = {
     -- same, but for Coq
     coq = true,
   },
-    dependencies = {
-{ "LuaCATS/ffi-reflect", name = "ffi-reflect" },
-{ "LuaCATS/luassert", name = "luassert" },
-{ "LuaCATS/busted", name = "busted" },
-{ "LuaCATS/luv", name = "luv" },
-{ "LuaCATS/lfs", name = "lfs" },
-},  
       library = {
       { path = 'luv/library', words = { 'vim%.uv' } },
       { path = 'busted/library', words = { 'describe' } },
