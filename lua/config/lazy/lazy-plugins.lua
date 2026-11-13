@@ -69,7 +69,8 @@ require('lazy').setup {
       opts = { require 'kickstart.plugins.lint' },
       main = 'lint',
     },
-    -- NOTE: Next step on your Neovim journey: Add/Configure additional plugins for Kickstart
+  
+    require 'patches.nvim-lsp-config-defer-monkeypatch',
     --
     -- require 'kickstart.plugins.debug',
 
