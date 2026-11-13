@@ -1,9 +1,9 @@
 return {
-{ "LuaCATS/ffi-reflect", name = "ffi-reflect", lazy = true },
-{ "LuaCATS/luassert", name = "luassert", lazy = true },
-{ "LuaCATS/busted", name = "busted", lazy = true },
-{ "LuaCATS/luv", name = "luv", lazy = true },
-{ "LuaCATS/lfs", name = "lfs", lazy = true },  
+{ 'LuaCATS/ffi-reflect', name = 'types_ffi-reflect', lazy = true },
+{ 'LuaCATS/luassert', name = 'types_luassert', lazy = true },
+{ 'LuaCATS/busted', name = 'types_busted', lazy = true },
+{ 'LuaCATS/luv', name = 'types_luv', lazy = true },
+{ 'LuaCATS/lfs', name = 'types_lfs', lazy = true },  
   {
     'folke/lazydev.nvim',
     -- only load on lua files
