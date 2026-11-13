@@ -1,6 +1,6 @@
 -- shim: keeps existing lazy.nvim config 100% untouched
 -- and transparently routes any rogue vim.pack calls into lazy.nvim
-local _vimpack_queue = {}
+local vimpack_queue = {}
 
 vim.pack = setmetatable({
   add = function(specs, opts)
@@ -23,3 +23,4 @@ vim.pack = setmetatable({
     return function() end
   end,
 })
+return vimpack_queue
