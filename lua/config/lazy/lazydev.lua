@@ -28,7 +28,7 @@ integrations = {
 { path = 'types_luv/library', words = { 'vim%.uv' } },
 { path = 'types_busted/library', words = { 'describe' } },
 { path = 'types_luassert/library', words = { 'assert' } },
-{ path = 'types_luafilesystem/library', mods = { 'lfs' }, words = { 'lfs%.' } },
+{ path = 'types_luafilesystem/library', mods = { 'lfs' }, words = { 'lfs%.', 'LuaFileSystem%.', 'luafilesystem%.' } },
       },
     },
   },
