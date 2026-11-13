@@ -1,4 +1,4 @@
--- Drop-in shim: keeps your existing lazy.nvim config 100% untouched
+-- shim: keeps existing lazy.nvim config 100% untouched
 -- and transparently routes any rogue vim.pack calls into lazy.nvim
 local _vimpack_queue = {}
 
