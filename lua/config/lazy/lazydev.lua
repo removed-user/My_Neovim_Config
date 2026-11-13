@@ -18,17 +18,19 @@ integrations = {
     -- same, but for Coq
     coq = true,
   },
-      
+    dependencies = {
+{ "LuaCATS/ffi-reflect", name = "ffi-reflect" },
+{ "LuaCATS/luassert", name = "luassert" },
+{ "LuaCATS/busted", name = "busted" },
+{ "LuaCATS/luv", name = "luv" },
+{ "LuaCATS/lfs", name = "lfs" },
+},  
       library = {
-        --#FIXME: Needs refactor to use lazy, then load path here 
-        -- Load luvit types when the `vim.uv` word  
-        { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
-        { path = '${3rd}/busted/library', words = { 'describe' } },
-        { path = "${3rd}/luassert/library", words = { "assert" } },
-         -- 1. LuaFileSystem (bundled in lua_ls as ${3rd}/lfs/library, or use "lfs/library" if cloned)
-      { path = "${3rd}/lfs/library", mods = { "lfs" }, words = { "lfs%." } },
-      -- 2. ffi-reflect (assuming cloned as LuaCATS/ffi-reflect or similar)
-      { path = "${3rd}/ffi-reflect/library", mods = { "reflect", "ffi-reflect", "ffi_reflect" }, words = { "reflect%.typeof", "reflect%.getmetatable" } }, 
+      { path = 'luv/library', words = { 'vim%.uv' } },
+      { path = 'busted/library', words = { 'describe' } },
+      { path = "luassert/library", words = { "assert" } },
+      { path = "lfs/library", mods = { "lfs" }, words = { "lfs%." } },
+      { path = "ffi-reflect/library", mods = { "reflect", "ffi-reflect", "ffi_reflect" }, words = { "reflect%.typeof", "reflect%.getmetatable" } }, 
       },
     },
   },
