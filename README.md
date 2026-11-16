@@ -1,40 +1,21 @@
-# kickstart-modular.nvim
-
-## Introduction
-
-*This is a fork of [nvim-lua/kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim) that moves from a single file to a multi file configuration.*
-
-A starting point for Neovim that is:
-
-* Small
-* Modular
-* Completely Documented
-
 ## Installation
 
-### Install Neovim
 
-Kickstart.nvim targets *only* the latest
-['stable'](https://github.com/neovim/neovim/releases/tag/stable) and latest
+### Clone nvim configs
 
-['nightly'](https://github.com/neovim/neovim/releases/tag/nightly) of Neovim.
-Issues?, make sure you have at least the latest
-stable version. 
+```sh
+git clone https://github.com/removed-user/nvim.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
+```
 
-[package_manager](https://github.com/neovim/neovim/blob/master/INSTALL.md#install-from-package).
 
-To check your neovim version, run `nvim --version` and make sure it is not below the latest
-['stable'](https://github.com/neovim/neovim/releases/tag/stable) version. 
-
-If your chosen install method only gives you an outdated version of neovim, find
-alternative [installation methods below](#alternative-neovim-installation-methods).
-
-### Install External Dependencies
+### External Dependencies
 
 External Requirements:
-- Basic utils: `git`, `make`, `unzip`, C Compiler (`gcc`)
+- Basic utils: `git`, `make`, `unzip`, `gcc`
+
+Extras:
 - [ripgrep](https://github.com/BurntSushi/ripgrep#installation),
-  [fd-find](https://github.com/sharkdp/fd#installation)
+- [fd-find](https://github.com/sharkdp/fd#installation)
 - [tree-sitter CLI](https://github.com/tree-sitter/tree-sitter/blob/master/crates/cli/README.md#installation)
 - A Clipboard tool (xclip/xsel/win32yank or other depending on the platform)
 - A [Nerd Font](https://www.nerdfonts.com/): optional, provides various icons
@@ -47,27 +28,13 @@ Neovim's configurations are located under
 - `$XDG_CONFIG_HOME/nvim`
 - `~/.config/nvim`
 
-#### Recommended Step
-
-[Fork](https://docs.github.com/en/get-started/quickstart/fork-a-repo) this repo
-so that you have your own copy that you can modify, then install by cloning the
-fork to your machine using one of the commands below, depending on your OS.
+#### Maybe
 
 - You may want to remove `lazy-lock.json` from your fork's `.gitignore` file
-- It's ignored in the kickstart repo to makemaintenance easier, but - is
+- It's ignored in kickstart repo to make maintenance easier, but - is
 [recommended to track it in version control](https://lazy.folke.io/usage/lockfile).
 
-#### Clone kickstart.nvim
-
-<details><summary> Linux and Mac </summary>
-
-```sh
-git clone https://github.com/dam9000/kickstart-modular.nvim.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
-```
-
-</details>
-
-### Post Installation
+### Post Install
 
 Start Neovim
 
@@ -114,13 +81,42 @@ A fork of kickstart that does this while maintaining the same functionality is a
     * [Restructure the configuration](https://github.com/nvim-lua/kickstart.nvim/issues/218)
     * [Reorganize init.lua into a multi-file setup](https://github.com/nvim-lua/kickstart.nvim/pull/473)
 
+### Install Neovim
+
+Kickstart.nvim targets *only* the latest
+['stable'](https://github.com/neovim/neovim/releases/tag/stable) and latest
+
+['nightly'](https://github.com/neovim/neovim/releases/tag/nightly) of Neovim.
+
+Issues?, make sure you have at least the latest
+stable version. 
+
+[package_manager](https://github.com/neovim/neovim/blob/master/INSTALL.md#install-from-package).
+
+check version
+ `nvim --version` 
+make sure it is not below the latest
+
+['stable'](https://github.com/neovim/neovim/releases/tag/stable) version. 
+
+If your chosen install method only gives you an outdated version of neovim, find
+alternative [installation methods below](#alternative-neovim-installation-methods).
+
+### Alternative neovim installation methods
+
+For some systems it is expected that the
+[package manager installation_method](https://github.com/neovim/neovim/blob/master/INSTALL.md#install-from-package)
+
+Recommended by neovim: 
+Is significantly behind... If so... pick one of the following methods that are known to deliver fresh neovim versions very quickly.
+
 ### Install Recipes
 
 Below you can find OS specific install instructions for Neovim and dependencies.
 
 After installing all the dependencies continue with the [Install Kickstart](#install-kickstart) step.
 
-#### Linux Install
+#### Per Distro
 <details><summary>Ubuntu Install Steps</summary>
 
 ```
@@ -154,20 +150,3 @@ sudo pacman -S --noconfirm --needed gcc make git ripgrep fd tree-sitter-cli unzi
 ```
 </details>
 
-### Alternative neovim installation methods
-
-For some systems it is expected that the
-[package manager installation_method](https://github.com/neovim/neovim/blob/master/INSTALL.md#install-from-package)
-Recommended by neovim
-Is significantly behind... If that is the case for you... pick one of the following methods that are known to deliver fresh neovim versions very quickly.
-
-They have been picked for their popularity and because they make installing and updating
-neovim to the latest versions easy.
-
-You can also find more detail about the
-available methods being discussed
-
-[here](https://github.com/nvim-lua/kickstart.nvim/issues/1583).
-
-
-</details>
