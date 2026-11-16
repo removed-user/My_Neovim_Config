@@ -13,7 +13,7 @@ External Requirements:
 - Basic utils: `git`, `make`, `unzip`, `gcc`
 
 Extras:
-- [ripgrep](https://github.com/BurntSushi/ripgrep#installation),
+- [ripgrep](https://github.com/BurntSushi/ripgrep#installation)
 - [fd-find](https://github.com/sharkdp/fd#installation)
 - [tree-sitter CLI](https://github.com/tree-sitter/tree-sitter/blob/master/crates/cli/README.md#installation)
 - [Clipboard_tool]
