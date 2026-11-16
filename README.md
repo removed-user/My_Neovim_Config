@@ -76,6 +76,7 @@ When you run Neovim using `nvim-kickstart` alias it will use the alternative con
 
 Apply to any Neovim distribution you'd like to try out.
 
+---
 
 ## Config Base
 For my config base, I used with `Kickstart`
@@ -92,6 +93,7 @@ Original kickstart repo with the single `init.lua` file is available here:
 - [kickstart-modular.nvim](https://github.com/dam9000/kickstart-modular.nvim)
 *NOTE: This fork splits the configuration into smaller parts.*
 
+---
 
 ### Install Neovim
 
