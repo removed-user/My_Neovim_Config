@@ -5,6 +5,7 @@ return {
   {
     -- Main LSP Configuration
     'neovim/nvim-lspconfig',
+    config = false,
     dependencies = {
       {
 
@@ -13,7 +14,7 @@ return {
     opts = { automatic_enable = false, },
     dependencies = {
         { "mason-org/mason.nvim", opts = {
-        pip = false
+        pip = false,
       -- Automatically install LSPs and related tools to stdpath for Neovim
       -- Mason must be loaded before its dependents so we need to set it up here.
       -- NOTE: `opts = {}` is the same as calling `require('mason').setup({})`
