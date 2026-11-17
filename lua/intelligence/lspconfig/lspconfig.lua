@@ -6,17 +6,34 @@ return {
     -- Main LSP Configuration
     'neovim/nvim-lspconfig',
     dependencies = {
+      {
+
+{
+    "mason-org/mason-lspconfig.nvim",
+    opts = { automatic_enable = false, },
+    dependencies = {
+        { "mason-org/mason.nvim", opts = {
+        pip = false
       -- Automatically install LSPs and related tools to stdpath for Neovim
       -- Mason must be loaded before its dependents so we need to set it up here.
       -- NOTE: `opts = {}` is the same as calling `require('mason').setup({})`
-      {
-        'mason-org/mason.nvim',
+
         ---@module 'mason.settings'
         ---@type MasonSettings
         ---@diagnostic disable-next-line: missing-fields
-        opts = { pip = false },
+        }
+            },
+        "neovim/nvim-lspconfig",
+    },
+        }
       },
 
+        --[[
+        'mason-org/mason-lspconfig.nvim',
+        'mason-org/mason.nvim',  
+       -- ]]
+
+      
       -- Mason-lspconfig is a Mason wrapper around nvim-lspconfig, so we can get auto-install + autosetup for lsps.
       -- For every lsp you declare in the servers block...
 
@@ -25,7 +42,7 @@ return {
 
       -- One more note: mason-lspconfig expects the nvim-lspconfig name for servers, and handles name mapping for you.
 
-      'mason-org/mason-lspconfig.nvim',
+
       'WhoIsSethDaniel/mason-tool-installer.nvim',
       -- Useful status updates for LSP.
       { 'j-hui/fidget.nvim', opts = {} },
