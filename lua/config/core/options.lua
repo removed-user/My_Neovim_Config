@@ -1,3 +1,11 @@
+--[[
+local opt = vim.opt
+local o = vim.o
+local g = vim.g
+
+-------------------------------------- options ------------------------------------------
+--]]
+
 -- [[ Setting options ]]
 -- See `:help vim.o`
 -- NOTE: You can change these options as you wish!
