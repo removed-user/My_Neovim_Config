@@ -55,7 +55,10 @@ Messy
       end,
      }
  --]]
-local vimpack_shim = (function() local ok, res = pcall(require, "patches.vimpack_shim") return (ok and type(res) == "table") and res or {} end)()
+local vimpack_shim = (function()
+local ok, res = pcall(require, "patches.vimpack_shim")
+  return (ok and type(res) == "table") and res or {}
+ end)()
 
 require('lazy').setup {
   spec = {
