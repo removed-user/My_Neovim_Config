@@ -20,3 +20,8 @@ INFO	InfoMsg	DiagnosticInfo
 HINT	HintMsg(custom)	DiagnosticHint
 DEBUG	DebugMsg(custom)	DiagnosticHint or Debug
 OK/SUCCESS	OkMsg (custom)	DiagnosticOk
+
+
+vim.api.nvim_set_hl(0, "InfoMsg",  { link = "DiagnosticInfo", default = true })
+
+vim.api.nvim_set_hl(0, "DebugMsg", { link = "Comment", default = true })
