@@ -8,3 +8,15 @@ vim.log.levels.OFF   = 5
   
 end
   return err
+
+
+
+Log / Message Level | Message Highlight Group	| Diagnostic / Syntax Counterpart
+
+
+ERROR	ErrorMsg	DiagnosticError
+WARN	WarningMsg	DiagnosticWarn
+INFO	InfoMsg	DiagnosticInfo
+HINT	HintMsg(custom)	DiagnosticHint
+DEBUG	DebugMsg(custom)	DiagnosticHint or Debug
+OK/SUCCESS	OkMsg (custom)	DiagnosticOk
